@@ -1,0 +1,4 @@
+include ':Startup-Library'
+include ':ContentProvider'
+include ':app'
+rootProject.name = "AppStartupSimple"

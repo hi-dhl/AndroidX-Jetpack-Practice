@@ -9,11 +9,12 @@
             android:exported="false"
             tools:node="merge">
 
-            <!-- Automatically Initialize -->
+            <!-- 自动初始化 -->
             <meta-data
                 android:name="com.hi.dhl.startup.library.LibaryC"
                 android:value="androidx.startup" />
 
+            <!-- 手动初始化（也是延迟初始化） -->
             <meta-data
                 android:name="com.hi.dhl.startup.library.LibaryD"
                 android:value="androidx.startup"

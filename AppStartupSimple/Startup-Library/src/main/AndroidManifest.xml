@@ -15,10 +15,10 @@
                 android:value="androidx.startup" />
 
             <!-- 手动初始化（也是延迟初始化） -->
-            <meta-data
-                android:name="com.hi.dhl.startup.library.LibaryD"
-                android:value="androidx.startup"
-                tools:node="remove" />
+<!--            <meta-data-->
+<!--                android:name="com.hi.dhl.startup.library.LibaryD"-->
+<!--                android:value="androidx.startup"-->
+<!--                tools:node="remove" />-->
         </provider>
     </application>
 </manifest>

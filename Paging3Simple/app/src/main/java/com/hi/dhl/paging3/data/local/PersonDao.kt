@@ -18,7 +18,6 @@ import androidx.room.Query
 interface PersonDao {
 
     @Query("SELECT * FROM PersonEntity")
-    @Insert
     fun queryAllData(): PagingSource<Int, PersonEntity>
 
     @Insert

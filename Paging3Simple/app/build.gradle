@@ -54,6 +54,7 @@ dependencies {
     implementation Fragment.runtimeKtx
     implementation Depend.timber
     implementation Room.runtime
+    kapt Room.compiler
     implementation Anko.common
     implementation Koin.core
     implementation Koin.androidCore
@@ -61,6 +62,7 @@ dependencies {
     implementation Retrofit.runtime
     implementation Retrofit.gson
     implementation Depend.jDatabinding
+    implementation AndroidX.cardview
 
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit

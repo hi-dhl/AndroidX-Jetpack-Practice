@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hi.dhl.paging3.bean.Person
 import com.hi.dhl.paging3.data.AppExecutors
 import com.hi.dhl.paging3.ui.PersonAdapter
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 
 /**
  * <pre>
@@ -16,13 +18,12 @@ import com.hi.dhl.paging3.ui.PersonAdapter
  */
 
 @BindingAdapter("adapterList")
-fun bindAdapterTaskList(recyclerView: RecyclerView, data: PagingData<List<Person>>?) {
+fun bindAdapterTaskList(recyclerView: RecyclerView, data: Flow<PagingData<Person>>?) {
 
     requireNotNull(data) {
         throw RuntimeException(" adapter is null")
     }
 
-    val adapter = recyclerView.adapter as PersonAdapter
-//    AppExecutors.disIO {  adapter.getsubmitData(data) }
-
+//    val adapter = recyclerView.adapter as PersonAdapter
+//    data.collectLatest { adapter.submitData(it) }
 }

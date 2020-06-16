@@ -37,7 +37,7 @@ val remoteModule = module {
 }
 
 val repoModule = module {
-    single { RepositoryFactory(get()) }
+    single { RepositoryFactory(get()).makeLocalRepository() }
 }
 
-val appModule = listOf(viewModele, localModule, repoModule)
+val appModule = listOf(viewModele, localModule, remoteModule,repoModule)

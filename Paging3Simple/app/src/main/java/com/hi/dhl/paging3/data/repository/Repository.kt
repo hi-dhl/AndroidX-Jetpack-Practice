@@ -1,8 +1,8 @@
 package com.hi.dhl.paging3.data.repository
 
-import androidx.paging.PagingSource
+import androidx.paging.PagingData
 import com.hi.dhl.paging3.bean.Person
-import com.hi.dhl.paging3.data.local.PersonEntity
+import kotlinx.coroutines.flow.Flow
 
 /**
  * <pre>
@@ -12,5 +12,10 @@ import com.hi.dhl.paging3.data.local.PersonEntity
  * </pre>
  */
 interface Repository {
-    fun getAllData():PagingSource<Int, PersonEntity>
+
+    fun postOfData(): Flow<PagingData<Person>>
+
+    fun remove(person: Person)
+
+    fun insert(person: Person)
 }

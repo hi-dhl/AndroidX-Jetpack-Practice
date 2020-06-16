@@ -5,6 +5,7 @@ package com.hi.dhl.paging3.data.mapper
  *     author: dhl
  *     date  : 2020/6/16
  *     desc  :
+ *
  * </pre>
  */
 interface Mapper<I, O> {

@@ -12,4 +12,8 @@ import androidx.room.PrimaryKey
  */
 
 @Entity
-class PersonEntity(@PrimaryKey(autoGenerate = true) val id: Int = 0, val name: String)
+class PersonEntity(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val name: String,
+    val updateTime: Long = System.currentTimeMillis()
+)

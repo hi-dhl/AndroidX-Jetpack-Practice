@@ -15,128 +15,52 @@ import kotlinx.coroutines.flow.map
  *     author: dhl
  *     date  : 2020/6/16
  *     desc  :
+ *
+ *     1. Repository 执行核心业务逻辑处理（网络、缓存、数据库）
+ *     2. 当 Mapping 映射类比较多的时候，可以使用装饰者模式进行封装，
+ *
+ *     class DataMappersFacade(
+ *          val mapper2PersonEntity: Mapper<Person, PersonEntity>,
+ *          val mapper2Person: Mapper<PersonEntity, Person>
+ *      )
+ *
+ *      PersonRepositoryImpl(
+ *          val db: AppDataBase,
+ *          val dataMappersFacade:DataMappersFacade
+ *      )
+ *
+ *      数据映射非常重要的概率，后续会写详细的 Demo 演示
  * </pre>
  */
+
 class PersonRepositoryImpl(
     val db: AppDataBase,
-    val mapper2PersonEntity: Mapper<Person,PersonEntity>,
+    val pageConfig: PagingConfig,
+    val mapper2PersonEntity: Mapper<Person, PersonEntity>,
     val mapper2Person: Mapper<PersonEntity, Person>
 ) : Repository {
 
+    private val mPersonDao by lazy { db.personDao() }
+
     override fun postOfData(): Flow<PagingData<Person>> {
-        return Pager(
-            PagingConfig(
-                /**
-                 * A good page size is a value that fills at least a few screens worth of content on a
-                 * large device so the User is unlikely to see a null item.
-                 * You can play with this constant to observe the paging behavior.
-                 *
-                 * It's possible to vary this with list device size, but often unnecessary, unless a
-                 * user scrolling on a large device is expected to scroll through items more quickly
-                 * than a small device, such as when the large device uses a grid layout of items.
-                 */
-                /**
-                 * A good page size is a value that fills at least a few screens worth of content on a
-                 * large device so the User is unlikely to see a null item.
-                 * You can play with this constant to observe the paging behavior.
-                 *
-                 * It's possible to vary this with list device size, but often unnecessary, unless a
-                 * user scrolling on a large device is expected to scroll through items more quickly
-                 * than a small device, such as when the large device uses a grid layout of items.
-                 */
-                /**
-                 * A good page size is a value that fills at least a few screens worth of content on a
-                 * large device so the User is unlikely to see a null item.
-                 * You can play with this constant to observe the paging behavior.
-                 *
-                 * It's possible to vary this with list device size, but often unnecessary, unless a
-                 * user scrolling on a large device is expected to scroll through items more quickly
-                 * than a small device, such as when the large device uses a grid layout of items.
-                 */
-                /**
-                 * A good page size is a value that fills at least a few screens worth of content on a
-                 * large device so the User is unlikely to see a null item.
-                 * You can play with this constant to observe the paging behavior.
-                 *
-                 * It's possible to vary this with list device size, but often unnecessary, unless a
-                 * user scrolling on a large device is expected to scroll through items more quickly
-                 * than a small device, such as when the large device uses a grid layout of items.
-                 */
-                pageSize = 60,
+        return Pager(pageConfig) {
+            // 加载数据库的数据
+            mPersonDao.queryAllData()
+        }.flow.map { pagingData ->
 
-                /**
-                 * If placeholders are enabled, PagedList will report the full size but some items might
-                 * be null in onBind method (PagedListAdapter triggers a rebind when data is loaded).
-                 *
-                 * If placeholders are disabled, onBind will never receive null but as more pages are
-                 * loaded, the scrollbars will jitter as new pages are loaded. You should probably
-                 * disable scrollbars if you disable placeholders.
-                 */
-
-                /**
-                 * If placeholders are enabled, PagedList will report the full size but some items might
-                 * be null in onBind method (PagedListAdapter triggers a rebind when data is loaded).
-                 *
-                 * If placeholders are disabled, onBind will never receive null but as more pages are
-                 * loaded, the scrollbars will jitter as new pages are loaded. You should probably
-                 * disable scrollbars if you disable placeholders.
-                 */
-
-                /**
-                 * If placeholders are enabled, PagedList will report the full size but some items might
-                 * be null in onBind method (PagedListAdapter triggers a rebind when data is loaded).
-                 *
-                 * If placeholders are disabled, onBind will never receive null but as more pages are
-                 * loaded, the scrollbars will jitter as new pages are loaded. You should probably
-                 * disable scrollbars if you disable placeholders.
-                 */
-
-                /**
-                 * If placeholders are enabled, PagedList will report the full size but some items might
-                 * be null in onBind method (PagedListAdapter triggers a rebind when data is loaded).
-                 *
-                 * If placeholders are disabled, onBind will never receive null but as more pages are
-                 * loaded, the scrollbars will jitter as new pages are loaded. You should probably
-                 * disable scrollbars if you disable placeholders.
-                 */
-                enablePlaceholders = true,
-
-                /**
-                 * Maximum number of items a PagedList should hold in memory at once.
-                 *
-                 * This number triggers the PagedList to start dropping distant pages as more are loaded.
-                 */
-
-                /**
-                 * Maximum number of items a PagedList should hold in memory at once.
-                 *
-                 * This number triggers the PagedList to start dropping distant pages as more are loaded.
-                 */
-
-                /**
-                 * Maximum number of items a PagedList should hold in memory at once.
-                 *
-                 * This number triggers the PagedList to start dropping distant pages as more are loaded.
-                 */
-
-                /**
-                 * Maximum number of items a PagedList should hold in memory at once.
-                 *
-                 * This number triggers the PagedList to start dropping distant pages as more are loaded.
-                 */
-                maxSize = 200
-            )
-        ) {
-            db.personDao().queryAllData()
-        }.flow.map { pagingData -> pagingData.map { mapper2Person.map(it) } }
+            // 数据映射，数据库实体 PersonEntity ——>  上层用到的实体 Person
+            pagingData.map { mapper2Person.map(it) }
+        }
     }
 
     override fun remove(person: Person) {
-        db.personDao().delete(mapper2PersonEntity.map(person))
+        // 数据映射， 上层用到的实体 Person ——> 数据库实体 PersonEntity
+        mPersonDao.delete(mapper2PersonEntity.map(person))
     }
 
     override fun insert(person: Person) {
-        db.personDao().delete(mapper2PersonEntity.map(person))
+        // 数据映射， 上层用到的实体 Person ——> 数据库实体 PersonEntity
+        mPersonDao.delete(mapper2PersonEntity.map(person))
     }
 
 

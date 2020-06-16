@@ -8,25 +8,37 @@ import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
 import com.hi.dhl.paging3.R
 import com.hi.dhl.paging3.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.AnkoLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
- * DataBindingAppCompatActivity 是基于 DataBinding 封装的 AppCompatActivity
+ * <pre>
+ *     author: dhl
+ *     date  : 2020/6/16
+ *     desc  :
+ *
+ *     DataBindingAppCompatActivity 是基于 DataBinding 封装的 AppCompatActivity
+ *     更多信息可以查看 @see <a href="https://github.com/hi-dhl/JDataBinding"></a>
+ *
+ * </pre>
  */
+
 class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
 
+    // 通过 koin 依赖注入 MainViewModel
     private val mMainViewModel: MainViewModel by viewModel()
+
     private val mAdapter by lazy { PersonAdapter() }
 
     private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // bind view
         mBinding.apply {
-            lifecycleOwner = this@MainActivity
             rvList.adapter = mAdapter
+            lifecycleOwner = this@MainActivity
         }
 
         /**
@@ -36,10 +48,10 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
             mAdapter.submitData(lifecycle, data)
         })
 
-
         /**
          * 方法一[MainViewModel.pageDataLiveData] 和方法二 [MainViewModel.pageDataLiveData2] 调用方式相同
          */
+
 //        mMainViewModel.pageDataLiveData2.observe(this, Observer { data ->
 //            lifecycleScope.launch {
 //                data.collectLatest { mAdapter.submitData(lifecycle, it) }
@@ -47,18 +59,17 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
 //
 //        })
 
-        // 方法四
-//        lifecycleScope.launch {
-//            mMainViewModel.postOfPerson().collectLatest { mAdapter.submitData(it) }
-//        }
-
         initSwipeToDelete()
     }
 
     /**
-     * 当左右滑动 item 时，删除对应的条目
+     * 调用 ItemTouchHelper 实现 左右滑动 删除 item 功能
      */
     private fun initSwipeToDelete() {
+
+        /**
+         * 位于 [androidx.recyclerview.widget] 包下，已经封装好的控件
+         */
         ItemTouchHelper(object : ItemTouchHelper.Callback() {
             override fun getMovementFlags(
                 recyclerView: RecyclerView,
@@ -73,6 +84,7 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 (viewHolder as PersonViewHolder).mBinding.person?.let {
+                    // 当 item 左滑 或者 右滑 的时候删除 item
                     mMainViewModel.remove(it)
                 }
             }

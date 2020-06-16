@@ -1,12 +1,4 @@
-import com.hi.dhl.plugin.AndroidX
-import com.hi.dhl.plugin.Anko
-import com.hi.dhl.plugin.BuildConfig
-import com.hi.dhl.plugin.Depend
-import com.hi.dhl.plugin.Fragment
-import com.hi.dhl.plugin.Koin
-import com.hi.dhl.plugin.Retrofit
-import com.hi.dhl.plugin.Room
-import com.hi.dhl.plugin.kotlinLib
+import com.hi.dhl.plugin.*
 
 plugins {
     // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的id
@@ -46,7 +38,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation kotlinLib.stdlibJdk8
+    implementation Kt.stdlibJdk8
     implementation AndroidX.coreKtx
     implementation AndroidX.appcompat
     implementation AndroidX.constraintlayout
@@ -59,8 +51,6 @@ dependencies {
     implementation Koin.core
     implementation Koin.androidCore
     implementation Koin.viewmodel
-    implementation Retrofit.runtime
-    implementation Retrofit.gson
     implementation Depend.jDatabinding
     implementation AndroidX.cardview
 

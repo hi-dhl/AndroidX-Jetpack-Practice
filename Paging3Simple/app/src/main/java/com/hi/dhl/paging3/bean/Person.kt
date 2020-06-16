@@ -10,7 +10,7 @@ import java.util.jar.Attributes
  *     desc  :
  * </pre>
  */
-data class Person(val id: Int, val name: String) {
+data class Person(val id: Int, val name: String, val updateTime: Long) {
     companion object {
 
         val diffCallback = object : DiffUtil.ItemCallback<Person>() {

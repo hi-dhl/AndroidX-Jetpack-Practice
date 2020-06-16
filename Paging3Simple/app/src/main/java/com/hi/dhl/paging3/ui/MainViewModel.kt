@@ -1,11 +1,13 @@
 package com.hi.dhl.paging3.ui
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import com.hi.dhl.paging3.bean.Person
 import com.hi.dhl.paging3.data.AppExecutors
 import com.hi.dhl.paging3.data.repository.Repository
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 
 /**
  * <pre>
@@ -15,6 +17,13 @@ import kotlinx.coroutines.flow.Flow
  * </pre>
  */
 class MainViewModel(val repository: Repository) : ViewModel() {
+
+    /**
+     *
+     * 方法三 推荐
+     * 在项目里面，我们使用的是 Flow，调用 Flow 的 asLiveData 方法转为 LiveData
+     */
+    val pageDataLiveData3: LiveData<PagingData<Person>> = repository.postOfData().asLiveData()
 
     /**
      * 方法一
@@ -43,17 +52,6 @@ class MainViewModel(val repository: Repository) : ViewModel() {
         emit(repository.postOfData())
     }
 
-    /**
-     *
-     * 方法三
-     *
-     * 在项目里面，我们使用的是 Flow， 所以方法更加简单，一行代码就搞定了
-     */
-    val pageDataLiveData3: LiveData<PagingData<Person>> = repository.postOfData().asLiveData()
-
-
-    //-------------------方法四-------------
-    fun postOfPerson() = repository.postOfData()
 
     fun remove(person: Person) {
         AppExecutors.disIO {

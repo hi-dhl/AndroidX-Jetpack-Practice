@@ -13,7 +13,7 @@ import com.hi.dhl.paging3.bean.Person
  * <pre>
  *     author: dhl
  *     date  : 2020/6/16
- *     desc  :
+ *     desc  : 不久会开发一个基于 databinding 封装的 PagingDataAdapter，只需要几行代码就可以解决
  * </pre>
  */
 

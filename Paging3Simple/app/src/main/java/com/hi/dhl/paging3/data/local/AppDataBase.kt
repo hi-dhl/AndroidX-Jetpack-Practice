@@ -25,25 +25,34 @@ abstract class AppDataBase : RoomDatabase() {
     abstract fun personDao(): PersonDao
 
     companion object {
-        private val DB_NAME = "dhl"
+        val DB_NAME = "dhl"
+        private var instance: AppDataBase? = null
 
-        fun initDataBase(context: Context): AppDataBase {
-            var model = if (BuildConfig.DEBUG) RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING
-            else RoomDatabase.JournalMode.AUTOMATIC
-            return Room.databaseBuilder(context, AppDataBase::class.java, DB_NAME)
-                .addCallback(object : RoomDatabase.Callback() {
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        initData(context.applicationContext)
-                    }
-                })
-                .setJournalMode(model)
-                .build()
+        @Synchronized
+        fun initDataBase(context: Context): AppDataBase? {
+            if (instance == null) {
+                val model = if (BuildConfig.DEBUG) RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING
+                else RoomDatabase.JournalMode.AUTOMATIC
+                instance = Room.databaseBuilder(context, AppDataBase::class.java, DB_NAME)
+                    .addCallback(object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            initData(context.applicationContext)
+                        }
+                    })
+                    .setJournalMode(model)
+                    .build()
+            }
+            return instance
         }
 
-        private fun initData(context: Context) {
+        /**
+         * 初始化 DataBase 的时候填充数据
+         */
+        fun initData(context: Context) {
             AppExecutors.disIO {
-                initDataBase(context).personDao()
-                    .insert(CHEESE_DATA.map { PersonEntity(name = it) })
+                initDataBase(context)?.personDao()
+                    ?.insert(CHEESE_DATA.map { PersonEntity(name = it) })
             }
         }
     }
@@ -53,7 +62,7 @@ abstract class AppDataBase : RoomDatabase() {
 /**
  * 数据来源于 Google 提供的测试数据
  */
-private val CHEESE_DATA = arrayListOf(
+val CHEESE_DATA = arrayListOf(
     "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
     "Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale",
     "Aisy Cendre", "Allgauer Emmentaler", "Alverca", "Ambert", "American Cheese",

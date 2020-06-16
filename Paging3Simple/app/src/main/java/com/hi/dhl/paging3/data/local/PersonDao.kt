@@ -1,10 +1,7 @@
 package com.hi.dhl.paging3.data.local
 
 import androidx.paging.PagingSource
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 /**
  * <pre>
@@ -17,10 +14,10 @@ import androidx.room.Query
 @Dao
 interface PersonDao {
 
-    @Query("SELECT * FROM PersonEntity")
+    @Query("SELECT * FROM PersonEntity order by updateTime desc")
     fun queryAllData(): PagingSource<Int, PersonEntity>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(personEntity: List<PersonEntity>)
 
     @Delete

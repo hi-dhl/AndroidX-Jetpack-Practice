@@ -1,2 +1,3 @@
+includeBuild("../versionPlugin")
 include ':app'
 rootProject.name = "Paging3Simple"

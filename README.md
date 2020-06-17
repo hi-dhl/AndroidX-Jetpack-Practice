@@ -22,12 +22,33 @@ App Startup 提供了一个 ContentProvider 来运行所有依赖项的初始化
     * 模块 Startup-Library：提供了运行 App Startup 示例项目
 * [App Startup 实践以及原理分析](https://juejin.im/post/5ee4bbe4f265da76b559bdfe)
 
+### Paging3Simple
+
+Paging 是一个分页库，它可以帮助您从本地存储或通过网络加载和显示数据。这种方法使你的 App 更有效地使用网络带宽和系统资源，而 Paging3 是使用 Kotlin 协程完全重写的库：
+
+* 在内存中缓存分页数据，确保您的 App 在使用分页数据时有效地使用系统资源。
+* 内置删除重复数据的请求，确保您的 App 有效地使用网络带宽和系统资源。
+* 可配置 RecyclerView 的 adapters，当用户滚动到加载数据的末尾时自动请求数据。
+* 支持 Kotlin 协程和 Flow, 以及 LiveData 和 RxJava。
+
+[Jetpack 成员 Paging 3 实践以及原理分析（一）](https://juejin.im/post/5ee998e8e51d4573d65df02b)
+
+**项目 Paging3Simple 结构如下：**
+
+![](http://cdn.51git.cn/2020-06-17-159232877840722.jpg)
+    
+* bean: 存放上层需要的 model，会和 RecyclerView 的 Adapter 绑定在一起。
+* loca: 存放和本地数据库相关的操作。
+* mapper: 数据映射，主要将数据源的实体 转成上层的 model。
+* repository：主要来处理和数据源相关的操作（本地、网络、内存中缓存等等）。
+* di: 和依赖注入相关。
+* ui：数据的展示。
 
 ### 其他成员
 
-陆续增加中......敬请期待
+* versionPlugin：作为整个仓库的依赖库的版本管理。
 
- 
+其他组件成员陆续增加中......敬请期待
 
 ## 结语
 

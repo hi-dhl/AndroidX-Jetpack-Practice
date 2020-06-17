@@ -52,8 +52,7 @@ Paging 是一个分页库，它可以帮助您从本地存储或通过网络加�
 
 ## 结语
 
-另外我还在维护其他三个项目 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)、 
-[Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin) 和 [Technical-Article-Translation](https://github.com/hi-dhl/Technical-Article-Translation) 可以前去查看
+致力于分享一系列 Android 系统源码、逆向分析、算法、翻译、Jetpack  源码相关的文章，可以关注我，欢迎 star，一起来学习，期待与你一起成长，另外我还在维护其他三个项目 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)、[Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin) 和 [Technical-Article-Translation](https://github.com/hi-dhl/Technical-Article-Translation) 可以前去查看
 
 ### Android10-Source-Analysis
 

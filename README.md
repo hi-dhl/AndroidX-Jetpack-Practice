@@ -4,10 +4,10 @@
 <p align="center"> 本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实践项目 以及组件对应的分析文章 </p>
 
 <p align="center">
-<a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a>  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> <img src="https://img.shields.io/badge/Jetpack-AppStartup|Paging3-8633FF.svg"/> <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
+<a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a>  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> <img src="https://img.shields.io/badge/Jetpack-AppStartup | Paging3-8633FF.svg"/> <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
 </p>
 
-![](media/15920418119729.jpg)
+![](http://cdn.51git.cn/2020-06-19-3551539-2cae0f5a80bce069.png)
 
 本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实战项目 以及组件对应分析文章，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态，敬请期待
 
@@ -46,7 +46,7 @@ Paging 是一个分页库，它可以帮助您从本地存储或通过网络加�
 
 ### 其他成员
 
-* versionPlugin：作为整个仓库的依赖库的版本管理。
+* VersionPlugin：作为整个仓库的依赖库的版本管理。
 
 其他组件成员陆续增加中......敬请期待
 

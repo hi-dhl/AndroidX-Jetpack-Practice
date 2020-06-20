@@ -10,6 +10,7 @@ package com.hi.dhl.plugin
 
 object Versions {
     val retrofit = "2.9.0"
+    val okhttpLogging = "3.9.0"
     val appcompat = "1.1.0"
     val coreKtx = "1.3.0"
     val constraintlayout = "1.1.3"
@@ -23,11 +24,12 @@ object Versions {
     val recyclerview = "1.0.0"
     val fragment = "1.2.1"
     val anko = "0.10.8"
-
+    val swiperefreshlayout = "1.0.0"
     val junit = "4.12"
     val junitExt = "1.1.1"
     val espressoCore = "3.2.0"
     val jDatabinding = "1.0.1"
+    val runtime = "0.11.0"
 }
 
 object AndroidX {
@@ -41,6 +43,12 @@ object AndroidX {
     val workTesting = "androidx.work:work-testing:${Versions.work}"
     val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    val swiperefreshlayout =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
+}
+
+object Coil {
+    val runtime = "io.coil-kt:coil:${Versions.runtime}"
 }
 
 object Room {
@@ -82,6 +90,7 @@ object Retrofit {
     val runtime = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     val mock = "com.squareup.retrofit2:retrofit-mock:${Versions.retrofit}"
+    val logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLogging}"
 }
 
 object Depend {

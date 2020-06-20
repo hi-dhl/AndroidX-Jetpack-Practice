@@ -8,7 +8,6 @@ import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
 import com.hi.dhl.paging3.network.R
 import com.hi.dhl.paging3.network.databinding.ActivityMainBinding
 import com.hi.dhl.paging3.network.ui.github.FooterAdapter
-import com.hi.dhl.paging3.network.ui.zhihu.ZhihuNewsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
@@ -32,7 +31,6 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
     private val mMainViewModel: MainViewModel by viewModel()
 
     private val mAdapter by lazy { GitHubAdapter() }
-    private val mZhihuNewsAdapter by lazy { ZhihuNewsAdapter() }
 
     private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
 
@@ -41,22 +39,17 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
 
         // bind view
         mBinding.apply {
-//            rvList.adapter = mZhihuNewsAdapter.withLoadStateFooter(
-//                footer = FooterAdapter(mZhihuNewsAdapter)
-//            )
-            rvList.adapter = mZhihuNewsAdapter
+            rvList.adapter = mAdapter.withLoadStateFooter(
+                footer = FooterAdapter(mAdapter)
+            )
             swipeRefresh.setOnRefreshListener {
-                mZhihuNewsAdapter.refresh()
+                mAdapter.refresh()
             }
             lifecycleOwner = this@MainActivity
         }
 
-//        mMainViewModel.gitHubLiveData.observe(this, Observer { data ->
-//            mAdapter.submitData(lifecycle, data)
-//        })
-
-        mMainViewModel.zhihuDataLiveData.observe(this, Observer { data ->
-            mZhihuNewsAdapter.submitData(lifecycle, data)
+        mMainViewModel.gitHubLiveData.observe(this, Observer { data ->
+            mAdapter.submitData(lifecycle, data)
         })
 
         // 监听数据的状态，显示不同的状态
@@ -69,10 +62,14 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
                     }
                 }
                 is LoadState.Loading -> { // 正在加载
+                    if (mAdapter.itemCount <= 0) {
+                        tvResult.setText(getString(R.string.load_status_loading))
+                    }
                     error { listener.refresh.toString() }
                 }
-                is LoadState.NotLoading -> { //
+                is LoadState.NotLoading -> { // 加载完成
                     tvResult.visibility = View.GONE
+                    swipeRefresh.isRefreshing = false
                     error { listener.refresh.toString() }
                 }
             }

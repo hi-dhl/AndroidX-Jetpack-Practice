@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Paging3Simple</string>
     <string name="result">由于 GitHub Api 的限制，请过1分钟在去尝试</string>
+    <string name="load_status_loading">正在加载数据</string>
 </resources>

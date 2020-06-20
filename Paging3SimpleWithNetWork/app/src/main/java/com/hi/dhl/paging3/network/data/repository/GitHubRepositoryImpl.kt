@@ -4,7 +4,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.hi.dhl.paging3.network.bean.GitHubAccount
-import com.hi.dhl.paging3.network.data.local.AppDataBase
 import com.hi.dhl.paging3.network.data.mapper.Mapper
 import com.hi.dhl.paging3.network.data.remote.GitHubService
 import com.hi.dhl.paging3.network.data.remote.GithubAccountModel
@@ -35,7 +34,6 @@ import kotlinx.coroutines.flow.map
  */
 
 class GitHubRepositoryImpl(
-    val db: AppDataBase,
     val pageConfig: PagingConfig,
     val gitHubApi: GitHubService,
     val mapper2Person: Mapper<GithubAccountModel, GitHubAccount>
@@ -44,9 +42,8 @@ class GitHubRepositoryImpl(
     override fun postOfData(id: Int): Flow<PagingData<GitHubAccount>> {
         return Pager(pageConfig) {
             // 加载数据库的数据
-            ItemKeyedPagingSource(gitHubApi, 0)
+            GitHubItemPagingSource(gitHubApi, 0)
         }.flow.map { pagingData ->
-
             // 数据映射，数据库实体 PersonEntity ——>  上层用到的实体 Person
             pagingData.map { mapper2Person.map(it) }
         }

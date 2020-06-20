@@ -2,7 +2,6 @@ package com.hi.dhl.paging3.network.data.repository
 
 import androidx.paging.PagingData
 import com.hi.dhl.paging3.network.bean.GitHubAccount
-import com.hi.dhl.paging3.network.data.remote.ZhihuNewsModel
 import kotlinx.coroutines.flow.Flow
 import org.jetbrains.anko.AnkoLogger
 

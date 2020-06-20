@@ -6,7 +6,6 @@ import androidx.lifecycle.asLiveData
 import androidx.paging.PagingData
 import com.hi.dhl.paging3.network.bean.GitHubAccount
 import com.hi.dhl.paging3.network.data.repository.Repository
-import com.hi.dhl.paging3.network.data.repository.ZhihuRepository
 
 /**
  * <pre>
@@ -15,7 +14,7 @@ import com.hi.dhl.paging3.network.data.repository.ZhihuRepository
  *     desc  :
  * </pre>
  */
-class MainViewModel(val repository: Repository, val zhihuRepository: ZhihuRepository) :
+class MainViewModel(val repository: Repository) :
     ViewModel() {
 
 
@@ -24,8 +23,6 @@ class MainViewModel(val repository: Repository, val zhihuRepository: ZhihuReposi
      */
     val gitHubLiveData: LiveData<PagingData<GitHubAccount>> =
         repository.postOfData(0).asLiveData()
-
-    val zhihuDataLiveData = zhihuRepository.postOfZhihuData().asLiveData()
 
 //        zhihuRepository.postOfZhihuData().asLiveData()
 

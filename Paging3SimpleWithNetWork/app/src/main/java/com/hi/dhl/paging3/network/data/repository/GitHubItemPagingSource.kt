@@ -13,7 +13,7 @@ import org.jetbrains.anko.error
  *     desc  :
  * </pre>
  */
-class ItemKeyedPagingSource(
+class GitHubItemPagingSource(
     private val gitHubApi: GitHubService,
     private val id: Int
 ) : PagingSource<Int, GithubAccountModel>(), AnkoLogger {
@@ -33,12 +33,4 @@ class ItemKeyedPagingSource(
             LoadResult.Error(e)
         }
     }
-//
-//    @OptIn(ExperimentalPagingApi::class)
-//    override fun getRefreshKey(state: PagingState<Int, GithubAccountModel>): Int? {
-//        return state.anchorPosition?.let { anchorPosition ->
-//            state.closestItemToPosition(anchorPosition)?.id
-//        }
-//    }
-
 }

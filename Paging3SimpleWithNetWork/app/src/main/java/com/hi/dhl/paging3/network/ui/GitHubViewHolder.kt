@@ -1,7 +1,10 @@
 package com.hi.dhl.paging3.network.ui
 
 import android.view.View
+import coil.api.load
+import coil.transform.CircleCropTransformation
 import com.hi.dhl.jdatabinding.DataBindingViewHolder
+import com.hi.dhl.paging3.network.R
 import com.hi.dhl.paging3.network.bean.GitHubAccount
 import com.hi.dhl.paging3.network.databinding.RecycieItemGithubBinding
 
@@ -22,6 +25,11 @@ class GitHubViewHolder(view: View) : DataBindingViewHolder<GitHubAccount>(view) 
     override fun bindData(data: GitHubAccount, position: Int) {
         mBinding.apply {
             githubAccount = data
+            avatar.load(data.avatar_url){
+                crossfade(true)
+                placeholder(R.mipmap.ic_launcher)
+                transformations(CircleCropTransformation())
+            }
             executePendingBindings()
         }
     }

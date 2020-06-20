@@ -1,16 +1,10 @@
 package com.hi.dhl.paging3.network.data
 
 import androidx.paging.PagingConfig
-import com.hi.dhl.paging3.network.data.local.AppDataBase
-import com.hi.dhl.paging3.network.data.mapper.GitHub2ModelMapper
 import com.hi.dhl.paging3.network.data.mapper.Model2GitHubMapper
-import com.hi.dhl.paging3.network.data.mapper.Model2ZhihuMpaaer
 import com.hi.dhl.paging3.network.data.remote.GitHubService
-import com.hi.dhl.paging3.network.data.remote.ZhihuService
 import com.hi.dhl.paging3.network.data.repository.GitHubRepositoryImpl
 import com.hi.dhl.paging3.network.data.repository.Repository
-import com.hi.dhl.paging3.network.data.repository.ZhihuRepository
-import com.hi.dhl.paging3.network.data.repository.ZhihuRepositoryImpl
 
 /**
  * <pre>
@@ -21,25 +15,15 @@ import com.hi.dhl.paging3.network.data.repository.ZhihuRepositoryImpl
  */
 
 class RepositoryFactory(
-    val appDataBase: AppDataBase,
-    val gitHubApi: GitHubService,
-    val zhihuApi: ZhihuService
+    val gitHubApi: GitHubService
 ) {
 
     // 传递 PagingConfig 和 Data Mapper
     fun makeGutHubRepository(): Repository =
         GitHubRepositoryImpl(
-            appDataBase,
             pagingConfig,
             gitHubApi, Model2GitHubMapper()
         )
-
-    fun makeZhihuRepository(): ZhihuRepository = ZhihuRepositoryImpl(
-        appDataBase,
-        pagingConfig,
-        zhihuApi,
-        Model2ZhihuMpaaer()
-    )
 
     val pagingConfig = PagingConfig(
         // 每页显示的数据的大小

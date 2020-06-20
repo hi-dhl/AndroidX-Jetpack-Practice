@@ -1,11 +1,8 @@
 package com.hi.dhl.paging3.network.di
 
 import com.hi.dhl.paging3.network.data.RepositoryFactory
-import com.hi.dhl.paging3.network.data.local.AppDataBase
-import com.hi.dhl.paging3.network.data.remote.ApiGitHub
-import com.hi.dhl.paging3.network.data.remote.ZhihuService
+import com.hi.dhl.paging3.network.data.remote.GitHubService
 import com.hi.dhl.paging3.network.ui.MainViewModel
-import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,22 +15,15 @@ import org.koin.dsl.module
  */
 
 val viewModele = module {
-    viewModel { MainViewModel(get(),get()) }
-}
-
-val localModule = module {
-    single { AppDataBase.initDataBase(androidApplication()) }
+    viewModel { MainViewModel(get()) }
 }
 
 val repoModule = module {
-    single { RepositoryFactory(get(), get(),get()).makeGutHubRepository() }
-    single { RepositoryFactory(get(), get(),get()).makeZhihuRepository() }
+    single { RepositoryFactory(get()).makeGutHubRepository() }
 }
 
 val remodeModule = module {
-    single { api }
-    single { ZhihuService.create() }
+    single { GitHubService.create() }
 }
 
-val api = ApiGitHub.gitHubService
-val appModule = listOf(viewModele, localModule, repoModule, remodeModule)
+val appModule = listOf(viewModele, repoModule, remodeModule)

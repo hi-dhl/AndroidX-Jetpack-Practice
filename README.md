@@ -11,27 +11,27 @@
 
 本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实战项目 以及组件对应分析文章，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态，敬请期待
 
-## Jetpack Jetpack 新成员
+## 仓库 Jetpack Jetpack 项目介绍
 
-### App Startup
+### AppStartupSimple
 
-App Startup 提供了一个 ContentProvider 来运行所有依赖项的初始化，避免每个第三方库单独使用 ContentProvider 进行初始化，从而提高了 App 的启动速度。
+AppStartupSimple 是基于 App Startup 开发的一个示例应用，App Startup 提供了一个 ContentProvider 来运行所有依赖项的初始化，避免每个第三方库单独使用 ContentProvider 进行初始化，从而提高了 App 的启动速度。
  
 * 项目 AppStartupSimple 结构如下：
     * 模块 ContentProvider：提供了运行 ContentProvider 示例项目
     * 模块 Startup-Library：提供了运行 App Startup 示例项目
-* [App Startup 实践以及原理分析](https://juejin.im/post/5ee4bbe4f265da76b559bdfe)
+* 关于 AppStartupSimple 分析的文章请看 [App Startup 实践以及原理分析](https://juejin.im/post/5ee4bbe4f265da76b559bdfe)
 
 ### Paging3Simple
 
-Paging 是一个分页库，它可以帮助您从本地存储或通过网络加载和显示数据。这种方法使你的 App 更有效地使用网络带宽和系统资源，而 Paging3 是使用 Kotlin 协程完全重写的库：
+Paging3Simple 是基于 Paging 开发的加载本地数据库的示例应用，Paging 是一个分页库，它可以帮助您从本地存储或通过网络加载和显示数据。这种方法使你的 App 更有效地使用网络带宽和系统资源，而 Paging3 是使用 Kotlin 协程完全重写的库：
 
 * 在内存中缓存分页数据，确保您的 App 在使用分页数据时有效地使用系统资源。
 * 内置删除重复数据的请求，确保您的 App 有效地使用网络带宽和系统资源。
 * 可配置 RecyclerView 的 adapters，当用户滚动到加载数据的末尾时自动请求数据。
 * 支持 Kotlin 协程和 Flow, 以及 LiveData 和 RxJava。
 
-[Jetpack 成员 Paging 3 实践以及原理分析（一）](https://juejin.im/post/5ee998e8e51d4573d65df02b)
+关于 Paging3Simple 加载本地数据分析的文章请看 [Jetpack 成员 Paging 3 实践以及原理分析（一）](https://juejin.im/post/5ee998e8e51d4573d65df02b)
 
 **项目 Paging3Simple 结构如下：**
 
@@ -44,9 +44,23 @@ Paging 是一个分页库，它可以帮助您从本地存储或通过网络加�
 * di: 和依赖注入相关。
 * ui：数据的展示。
 
-### 其他成员
+### Paging3SimpleWithNetWork
 
-* VersionPlugin：作为整个仓库的依赖库的版本管理。
+Paging3SimpleWithNetWork 是基于 Paging 开发的加载网络数据的示例应用，项目结构同 Paging3Simple
+
+关于 Paging3SimpleWithNetWork 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）过坑记](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
+
+### VersionPlugin
+
+VersionPlugin 是基于 Composing builds 开发的自定义插件，作为整个仓库的依赖库的版本管理，使用 Composing builds 作为依赖库的版本管理，它有以下好处：
+
+* 编译速度快，升级单个依赖库，不需要更新整个项目
+* 支持 AndroidStudio 自动补全和单击跳转
+* ......
+
+关于 VersionPlugin 的分析的文章请看 [再见吧 buildSrc, 拥抱 Composing builds 提升 Android 编译速度](https://juejin.im/post/5ed3ef906fb9a047bf7070b6)。
+
+### 其他成员
 
 其他组件成员陆续增加中......敬请期待
 

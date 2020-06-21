@@ -42,9 +42,9 @@ class GitHubRepositoryImpl(
     override fun postOfData(id: Int): Flow<PagingData<GitHubAccount>> {
         return Pager(pageConfig) {
             // 加载数据库的数据
-            GitHubItemPagingSource(gitHubApi, 0)
+            GitHubItemPagingSource(gitHubApi)
         }.flow.map { pagingData ->
-            // 数据映射，数据库实体 PersonEntity ——>  上层用到的实体 Person
+            // 数据映射，数据源 GithubAccountModel ——>  上层用到的 GitHubAccount
             pagingData.map { mapper2Person.map(it) }
         }
     }

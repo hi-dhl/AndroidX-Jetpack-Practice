@@ -42,6 +42,7 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
             rvList.adapter = mAdapter.withLoadStateFooter(
                 footer = FooterAdapter(mAdapter)
             )
+            swipeRefresh.isRefreshing = true
             swipeRefresh.setOnRefreshListener {
                 mAdapter.refresh()
             }
@@ -49,6 +50,7 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
         }
 
         mMainViewModel.gitHubLiveData.observe(this, Observer { data ->
+            swipeRefresh.isRefreshing = false
             mAdapter.submitData(lifecycle, data)
         })
 
@@ -57,32 +59,27 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
             // 监听初始化数据加载时候的状态(成功,失败)
             when (listener.refresh) {
                 is LoadState.Error -> { // 加载失败
-                    if (mAdapter.itemCount <= 0) {
-                        tvResult.setText(listener.refresh.toString())
-                    }
-                }
-                is LoadState.Loading -> { // 正在加载
-                    if (mAdapter.itemCount <= 0) {
-                        tvResult.setText(getString(R.string.load_status_loading))
-                    }
+                    swipeRefresh.isRefreshing = false
+                    tvResult.setText(listener.refresh.toString())
                     error { listener.refresh.toString() }
                 }
-                is LoadState.NotLoading -> { // 加载完成
-                    tvResult.visibility = View.GONE
-                    swipeRefresh.isRefreshing = false
+                is LoadState.Loading -> { // 正在加载
+                    error { listener.refresh.toString() }
+                }
+                is LoadState.NotLoading -> { // 当前未加载
                     error { listener.refresh.toString() }
                 }
             }
 
             // 监听往头部添加数据的时候的状态(成功,失败)
-//            when(listener.prepend){
-//
-//            }
+            when (listener.prepend) {
+
+            }
 
             // 监听下拉加载更多的时候的数据状态
-//            when(listener.append){
-//
-//            }
+            when (listener.append) {
+
+            }
         }
     }
 }

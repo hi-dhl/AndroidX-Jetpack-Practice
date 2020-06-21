@@ -20,7 +20,7 @@ interface GitHubService {
             List<GithubAccountModel>
 
     companion object {
-        fun create():GitHubService {
+        fun create(): GitHubService {
             val client = OkHttpClient.Builder()
                 .build()
 

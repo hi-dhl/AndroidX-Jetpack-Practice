@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="Github 有时效限制，不能频繁刷新"
+            android:text="Github 对每个ip 有访问限制，不能频繁刷新，尽量使用移动流量测试"
             android:textColor="@android:color/white"
             app:layout_constraintTop_toTopOf="parent" />
 

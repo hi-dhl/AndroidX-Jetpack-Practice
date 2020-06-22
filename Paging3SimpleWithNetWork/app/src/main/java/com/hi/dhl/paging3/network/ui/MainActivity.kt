@@ -1,14 +1,16 @@
 package com.hi.dhl.paging3.network.ui
 
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
 import com.hi.dhl.paging3.network.R
 import com.hi.dhl.paging3.network.databinding.ActivityMainBinding
 import com.hi.dhl.paging3.network.ui.github.FooterAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,7 +44,6 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
             rvList.adapter = mAdapter.withLoadStateFooter(
                 footer = FooterAdapter(mAdapter)
             )
-            swipeRefresh.isRefreshing = true
             swipeRefresh.setOnRefreshListener {
                 mAdapter.refresh()
             }
@@ -50,16 +51,23 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
         }
 
         mMainViewModel.gitHubLiveData.observe(this, Observer { data ->
-            swipeRefresh.isRefreshing = false
             mAdapter.submitData(lifecycle, data)
         })
+
+        /**
+         * 处理下拉刷新的状态
+         */
+        lifecycleScope.launch {
+            mAdapter.loadStateFlow.collectLatest { state ->
+                swipeRefresh.isRefreshing = state.refresh is LoadState.Loading
+            }
+        }
 
         // 监听数据的状态，显示不同的状态
         mAdapter.addLoadStateListener { listener ->
             // 监听初始化数据加载时候的状态(成功,失败)
             when (listener.refresh) {
                 is LoadState.Error -> { // 加载失败
-                    swipeRefresh.isRefreshing = false
                     tvResult.setText(listener.refresh.toString())
                     error { listener.refresh.toString() }
                 }

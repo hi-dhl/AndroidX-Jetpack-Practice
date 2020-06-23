@@ -3,6 +3,7 @@
     package="com.hi.dhl.hilt">
 
     <application
+        android:name=".HiltApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

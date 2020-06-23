@@ -30,6 +30,7 @@ object Versions {
     val espressoCore = "3.2.0"
     val jDatabinding = "1.0.1"
     val runtime = "0.11.0"
+    val hit = "2.28-alpha"
 }
 
 object AndroidX {
@@ -45,6 +46,8 @@ object AndroidX {
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     val swiperefreshlayout =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
+    val hiltRuntime = "com.google.dagger:hilt-android:${Versions.hit}"
+    val hitCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hit}"
 }
 
 object Coil {

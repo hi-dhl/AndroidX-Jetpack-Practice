@@ -57,7 +57,7 @@ HiltSimple 是基于 Jetpack 成员 Hilt 开发的示例应用。
 * 项目包含了 Hilt 常用注解 @HiltAndroidApp、@AndroidEntryPoint、@Inject、@Module、@InstallIn、@Provides、@EntryPoint 等等的使用。
 * 还包含了 Hilt 如何和第三方库、Jetpack 其他成员的使用。
 
-关于 HiltSimple 项目分析的文章请查看 [Jetpack 新成员 Hilt 实践（一）启程过坑记](https://juejin.im/post/5ef2e338f265da02e3401ec0)
+关于 HiltSimple 项目分析的文章请查看 [Jetpack 新成员 Hilt 实践（一）启程过坑记](https://juejin.im/post/5ef2f31951882565a94e06a5)
 
 ### VersionPlugin
 
@@ -93,5 +93,24 @@ VersionPlugin 是基于 Composing builds 开发的自定义插件，作为整个
 ### Technical-Article-Translation
 
 目前正在整理和翻译一系列精选国外的技术文章，不仅仅是翻译，很多优秀的英文技术文章提供了很好思路和方法，每篇文章都会有**译者思考**部分，对原文的更加深入的解读，可以关注我 GitHub 上的 [Technical-Article-Translation](https://github.com/hi-dhl/Technical-Article-Translation)。
+
+
+## License
+
+```
+Copyright 2020 hi-dhl (Jack Deng)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 

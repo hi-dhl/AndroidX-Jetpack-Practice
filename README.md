@@ -1,6 +1,6 @@
 # <p align="center"> AndroidX-Jetpack-Practice </p>
 
-<p align="center"> 仓库持续更新中，可以关注了解最新动态</p>
+<p align="center"> 仓库持续更新中，如果对你有帮助，请在右上角 star 一下</p>
 <p align="center"> 本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实践项目 以及组件对应的分析文章 </p>
 
 <p align="center">

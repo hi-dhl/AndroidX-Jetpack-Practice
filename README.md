@@ -48,14 +48,16 @@ Paging3Simple 是基于 Jetpack 成员 Paging 开发的加载本地数据库的�
 
 Paging3SimpleWithNetWork 是基于 Jetpack 成员 Paging 开发的加载网络数据的示例应用，项目结构同 Paging3Simple
 
-关于 Paging3SimpleWithNetWork 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）过坑记](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
+关于 Paging3SimpleWithNetWork 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
 
 ### HiltSimple
 
 HiltSimple 是基于 Jetpack 成员 Hilt 开发的示例应用。
 
 * 项目包含了 Hilt 常用注解 @HiltAndroidApp、@AndroidEntryPoint、@Inject、@Module、@InstallIn、@Provides、@EntryPoint 等等的使用。
-* 还包含了了 Hilt 如何和第三方库、Jetpack 其他成员的使用。
+* 还包含了 Hilt 如何和第三方库、Jetpack 其他成员的使用。
+
+关于 HiltSimple 项目分析的文章请查看 [Jetpack 新成员 Hilt 实践（一）启程过坑记](https://juejin.im/post/5ef2e338f265da02e3401ec0)
 
 ### VersionPlugin
 

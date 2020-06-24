@@ -1,13 +1,14 @@
 package com.hi.dhl.hilt
 
 import android.app.Application
+import com.hi.dhl.hilt.di.HiltSimple
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 /**
  * <pre>
  *     author: dhl
- *     date  : 2020/6/23
+ *     date  : 2020/6/24
  *     desc  :
  * </pre>
  */

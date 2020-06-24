@@ -1,4 +1,4 @@
-package com.hi.dhl.hilt
+package com.hi.dhl.hilt.di
 
 import android.util.Log
 import javax.inject.Inject
@@ -6,7 +6,7 @@ import javax.inject.Inject
 /**
  * <pre>
  *     author: dhl
- *     date  : 2020/6/23
+ *     date  : 2020/6/24
  *     desc  :
  * </pre>
  */

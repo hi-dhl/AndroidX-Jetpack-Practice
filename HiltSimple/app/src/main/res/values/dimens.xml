@@ -57,4 +57,5 @@
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="margin_25dp">25dp</dimen>
 
+    <dimen name="line_heigght">40dp</dimen>
 </resources>

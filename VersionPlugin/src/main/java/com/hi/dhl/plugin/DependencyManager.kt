@@ -31,6 +31,7 @@ object Versions {
     val jDatabinding = "1.0.1"
     val runtime = "0.11.0"
     val hit = "2.28-alpha"
+    val hitViewModule = "1.0.0-alpha01"
 }
 
 object AndroidX {
@@ -46,8 +47,14 @@ object AndroidX {
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
     val swiperefreshlayout =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
-    val hiltRuntime = "com.google.dagger:hilt-android:${Versions.hit}"
-    val hitCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hit}"
+
+}
+
+object Hilt {
+    val daggerRuntime = "com.google.dagger:hilt-android:${Versions.hit}"
+    val daggerCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hit}"
+    val viewModule = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hitViewModule}"
+    val compiler = "androidx.hilt:hilt-compiler:${Versions.hitViewModule}"
 }
 
 object Coil {

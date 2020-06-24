@@ -31,10 +31,10 @@ abstract class AppDataBase : RoomDatabase() {
         @Synchronized
         fun initDataBase(context: Context): AppDataBase? {
             if (instance == null) {
-                val model = if (BuildConfig.DEBUG) RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING
-                else RoomDatabase.JournalMode.AUTOMATIC
+                val model = if (BuildConfig.DEBUG) JournalMode.WRITE_AHEAD_LOGGING
+                else JournalMode.AUTOMATIC
                 instance = Room.databaseBuilder(context, AppDataBase::class.java, DB_NAME)
-                    .addCallback(object : RoomDatabase.Callback() {
+                    .addCallback(object : Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             initData(context.applicationContext)

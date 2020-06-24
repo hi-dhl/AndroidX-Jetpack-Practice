@@ -36,6 +36,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+//    compileKotlin {
+//        kotlinOptions {
+//            jvmTarget = "1.8"
+//        }
+//    }
+//    compileTestKotlin {
+//        kotlinOptions {
+//            jvmTarget = "1.8"
+//        }
+//    }
 }
 
 dependencies {
@@ -50,13 +61,22 @@ dependencies {
     implementation Room.runtime
     kapt Room.compiler
     implementation Anko.common
-    implementation AndroidX.cardview
-    implementation AndroidX.hiltRuntime
-    kapt AndroidX.hitCompiler
     implementation Retrofit.runtime
     implementation Retrofit.gson
+    implementation AndroidX.cardview
+
+    implementation Hilt.daggerRuntime
+    kapt Hilt.daggerCompiler
+    implementation Hilt.viewModule
+    kapt Hilt.compiler
 
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

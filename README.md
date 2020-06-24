@@ -15,7 +15,7 @@
 
 ### AppStartupSimple
 
-AppStartupSimple 是基于 App Startup 开发的一个示例应用，App Startup 提供了一个 ContentProvider 来运行所有依赖项的初始化，避免每个第三方库单独使用 ContentProvider 进行初始化，从而提高了 App 的启动速度。
+AppStartupSimple 是基于 Jetpack 成员 App Startup 开发的一个示例应用，App Startup 提供了一个 ContentProvider 来运行所有依赖项的初始化，避免每个第三方库单独使用 ContentProvider 进行初始化，从而提高了 App 的启动速度。
  
 * 项目 AppStartupSimple 结构如下：
     * 模块 ContentProvider：提供了运行 ContentProvider 示例项目
@@ -24,7 +24,7 @@ AppStartupSimple 是基于 App Startup 开发的一个示例应用，App Startup
 
 ### Paging3Simple
 
-Paging3Simple 是基于 Paging 开发的加载本地数据库的示例应用，Paging 是一个分页库，它可以帮助您从本地存储或通过网络加载和显示数据。这种方法使你的 App 更有效地使用网络带宽和系统资源，而 Paging3 是使用 Kotlin 协程完全重写的库：
+Paging3Simple 是基于 Jetpack 成员 Paging 开发的加载本地数据库的示例应用，Paging 是一个分页库，它可以帮助您从本地存储或通过网络加载和显示数据。这种方法使你的 App 更有效地使用网络带宽和系统资源，而 Paging3 是使用 Kotlin 协程完全重写的库：
 
 * 在内存中缓存分页数据，确保您的 App 在使用分页数据时有效地使用系统资源。
 * 内置删除重复数据的请求，确保您的 App 有效地使用网络带宽和系统资源。
@@ -46,9 +46,16 @@ Paging3Simple 是基于 Paging 开发的加载本地数据库的示例应用，P
 
 ### Paging3SimpleWithNetWork
 
-Paging3SimpleWithNetWork 是基于 Paging 开发的加载网络数据的示例应用，项目结构同 Paging3Simple
+Paging3SimpleWithNetWork 是基于 Jetpack 成员 Paging 开发的加载网络数据的示例应用，项目结构同 Paging3Simple
 
 关于 Paging3SimpleWithNetWork 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）过坑记](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
+
+### HiltSimple
+
+HiltSimple 是基于 Jetpack 成员 Hilt 开发的示例应用。
+
+* 项目包含了 Hilt 常用注解 @HiltAndroidApp、@AndroidEntryPoint、@Inject、@Module、@InstallIn、@Provides、@EntryPoint 等等的使用。
+* 还包含了了 Hilt 如何和第三方库、Jetpack 其他成员的使用。
 
 ### VersionPlugin
 

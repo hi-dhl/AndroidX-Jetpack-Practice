@@ -36,6 +36,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -62,10 +67,4 @@ dependencies {
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit
     androidTestImplementation Depend.espressoCore
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }

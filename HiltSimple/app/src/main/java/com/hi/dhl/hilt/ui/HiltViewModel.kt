@@ -3,7 +3,7 @@ package com.hi.dhl.hilt.ui
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.hi.dhl.paging3.data.local.AppDataBase
+import com.hi.dhl.paging3.data.local.PersonDao
 import com.hi.dhl.paging3.data.local.PersonEntity
 
 /**
@@ -14,7 +14,7 @@ import com.hi.dhl.paging3.data.local.PersonEntity
  * </pre>
  */
 class HiltViewModel @ViewModelInject constructor(
-    val db: AppDataBase
+    val personDao: PersonDao
 ) : ViewModel() {
 
     /**
@@ -29,8 +29,9 @@ class HiltViewModel @ViewModelInject constructor(
 
 
     fun insert() {
+        // 为了保持项目的简单，这里仅仅做测试用，实际开发的时候，不能在这里进行数据库的操作
         AppExecutors.disIO {
-            db.personDao().insert(PersonEntity(name = "dhl", updateTime = System.currentTimeMillis()))
+            personDao.insert(PersonEntity(name = "dhl", updateTime = System.currentTimeMillis()))
         }
     }
 }

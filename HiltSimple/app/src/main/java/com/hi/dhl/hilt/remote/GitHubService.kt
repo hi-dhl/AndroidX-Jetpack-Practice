@@ -1,6 +1,5 @@
 package com.hi.dhl.hilt.remote
 
-import com.hi.dhl.hilt.remote.GithubAccountModel
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -1,7 +1,8 @@
 package com.hi.dhl.paging3.data.local
 
-import androidx.paging.PagingSource
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 
 /**
  * <pre>

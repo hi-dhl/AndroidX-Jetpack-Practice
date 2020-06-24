@@ -3,7 +3,6 @@ package com.hi.dhl.hilt.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.hi.dhl.hilt.R
 import com.hi.dhl.hilt.di.HiltSimple
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +23,14 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    /**
+     * 在 App 模块中的 build.gradle 文件中添加以下代码，否则调用 `by viewModels()` 会编译不过
+     * tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+     *      kotlinOptions {
+     *      jvmTarget = "1.8"
+     *      }
+     * }
+     */
     private val mHitViewModule: HiltViewModel by viewModels()
 
     @Inject

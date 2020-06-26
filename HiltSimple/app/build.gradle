@@ -58,6 +58,7 @@ dependencies {
     implementation Retrofit.runtime
     implementation Retrofit.gson
     implementation AndroidX.cardview
+    implementation AndroidX.appStartup
 
     implementation Hilt.daggerRuntime
     kapt Hilt.daggerCompiler

@@ -32,6 +32,7 @@ object Versions {
     val runtime = "0.11.0"
     val hit = "2.28-alpha"
     val hitViewModule = "1.0.0-alpha01"
+    val appStartup = "1.0.0-alpha01"
 }
 
 object AndroidX {
@@ -48,6 +49,7 @@ object AndroidX {
     val swiperefreshlayout =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
 
+    val appStartup = "androidx.startup:startup-runtime:${Versions.appStartup}"
 }
 
 object Hilt {

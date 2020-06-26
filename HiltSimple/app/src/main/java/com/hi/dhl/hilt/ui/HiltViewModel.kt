@@ -15,6 +15,7 @@ import com.hi.dhl.paging3.data.local.PersonEntity
  */
 class HiltViewModel @ViewModelInject constructor(
     val personDao: PersonDao
+
 ) : ViewModel() {
 
     /**

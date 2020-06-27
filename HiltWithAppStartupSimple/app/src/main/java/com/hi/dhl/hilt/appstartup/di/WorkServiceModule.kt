@@ -17,7 +17,7 @@ import dagger.hilt.android.components.ApplicationComponent
 
 @Module
 @InstallIn(ApplicationComponent::class)
-// 这里使用了 ActivityComponent，因此 AnalyticsModule 绑定到 ActivityComponent 的生命周期。
+// 这里使用了 ActivityComponent，因此 WorkServiceModule 绑定到 ActivityComponent 的生命周期。
 abstract class WorkServiceModule {
 
     /**

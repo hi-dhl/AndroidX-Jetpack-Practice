@@ -64,7 +64,9 @@
 
 `HiltWithAppStartupSimple` 是基于 Jetpack 成员 Hilt 开发的示例应用，结合了 `App Startup`、`ViewModel` 等等。
 
-`HiltWithAppStartupSimple` 包含了 Hilt 全部注解的使用案例，也包含了项目 `HiltSimple` 中用到案例，可以先去了解 `HiltSimple`，之后在来了解 `HiltWithAppStartupSimple` 会更加的清楚
+`HiltWithAppStartupSimple` 包含了 Hilt 全部注解的使用案例，也包含了项目 `HiltSimple` 中用到案例，可以先去了解 `HiltSimple` 之后在来了解 `HiltWithAppStartupSimple` 会更加的清楚。
+
+关于 `HiltWithAppStartupSimple` 项目分析的文章请查看 [Jetpack 新成员 Hilt 实践之 App Startup（二）进阶篇](https://juejin.im/post/5ef7638c5188252e6a532db3)
 
 ### VersionPlugin
 

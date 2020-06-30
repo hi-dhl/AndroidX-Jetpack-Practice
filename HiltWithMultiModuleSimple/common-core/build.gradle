@@ -1,10 +1,15 @@
-import com.hi.dhl.plugin.*
+import com.hi.dhl.plugin.BuildConfig
+import com.hi.dhl.plugin.Hilt
+import com.hi.dhl.plugin.Kt
+import com.hi.dhl.plugin.Retrofit
+import com.hi.dhl.plugin.Room
 
 plugins {
     // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的id
     id "com.hi.dhl.plugin"
 }
-apply plugin: 'com.android.application'
+
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -15,13 +20,13 @@ android {
     buildToolsVersion BuildConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.hi.dhl.hilt.hilt.module"
         minSdkVersion BuildConfig.minSdkVersion
         targetSdkVersion BuildConfig.targetSdkVersion
         versionCode BuildConfig.versionCode
         versionName BuildConfig.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -30,7 +35,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -43,29 +47,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation Kt.stdlibJdk8
-    implementation AndroidX.coreKtx
-    implementation AndroidX.appcompat
-    implementation AndroidX.constraintlayout
-    implementation AndroidX.pagingRuntime
-    implementation Fragment.runtimeKtx
-    implementation Depend.timber
-    implementation Room.runtime
-    kapt Room.compiler
-    implementation Anko.common
-    implementation Retrofit.runtime
-    implementation Retrofit.gson
-    implementation AndroidX.cardview
-    implementation AndroidX.appStartup
-
+    implementation Kt.stdlibJdk8
     implementation Hilt.daggerRuntime
     kapt Hilt.daggerCompiler
     implementation Hilt.viewModule
     kapt Hilt.compiler
 
-    implementation  project(":feature-task")
-    testImplementation Depend.junit
-    androidTestImplementation Depend.androidTestJunit
-    androidTestImplementation Depend.espressoCore
+    implementation Room.runtime
+    kapt Room.compiler
+    implementation Retrofit.runtime
+    implementation Retrofit.gson
 }

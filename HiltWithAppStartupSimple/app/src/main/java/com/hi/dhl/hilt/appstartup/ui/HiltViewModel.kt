@@ -1,13 +1,10 @@
 package com.hi.dhl.hilt.appstartup.ui
 
-import android.content.Context
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.hi.dhl.hilt.appstartup.data.Repository
 import com.hi.dhl.hilt.appstartup.data.local.PersonEntity
-import dagger.hilt.android.qualifiers.ActivityContext
-import dagger.hilt.android.qualifiers.ApplicationContext
 
 /**
  * <pre>
@@ -41,7 +38,6 @@ class HiltViewModel @ViewModelInject constructor(
     }
 
     fun insert() {
-        // 为了保持项目的简单，这里仅仅做测试用，实际开发的时候，不能在这里进行数据库的操作
         tasksRepository.updateData(
             PersonEntity(
                 name = "dhl",

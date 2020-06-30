@@ -1,3 +1,5 @@
+include ':common-core'
 includeBuild("../VersionPlugin")
 include ':app'
+include ':feature-task'
 rootProject.name = "HiltWithMultiModuleSimple"

@@ -20,7 +20,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-// 这里使用了 ApplicationComponent，因此 NetworkModule 绑定到 Application 的生命周期。
+// 这里使用了 ApplicationComponent，因此 RoomModule 绑定到 Application 的生命周期。
 object RoomModule {
 
     /**

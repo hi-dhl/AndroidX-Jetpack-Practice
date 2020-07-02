@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * 在 App 模块中的 build.gradle 文件中添加以下代码，否则调用 `by viewModels()` 会编译不过
-     * tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-     *      kotlinOptions {
+     *
+     *    kotlinOptions {
      *      jvmTarget = "1.8"
-     *      }
-     * }
+     *    }
+     *
      */
     private val mHitViewModule: HiltViewModel by viewModels()
 

@@ -34,20 +34,44 @@
 
 关于 `Paging3Simple` 加载本地数据分析的文章请看 [Jetpack 成员 Paging 3 实践以及原理分析（一）](https://juejin.im/post/5ee998e8e51d4573d65df02b)
 
-**项目 Paging3Simple 结构如下：**
+**Paging3Simple 涉及的技术栈：**
 
-![](http://cdn.51git.cn/2020-06-17-159232877840722.jpg)
-    
-* `bean`: 存放上层需要的 `model`，会和 `RecyclerView` 的 `Adapter` 绑定在一起。
-* `loca`: 存放和本地数据库相关的操作。
-* `mapper`: 数据映射，主要将数据源的实体 转成上层的 `model`。
-* `repository`：主要来处理和数据源相关的操作（本地、网络、内存中缓存等等）。
-* `di`: 和依赖注入相关。
-* `ui`：数据的展示。
+* 基于 kotlin 和 协程
+* 使用 koin 作为依赖注入库
+* JetPack
+    * LiveData
+    * Lifecycle
+    * ViewModel
+    * Room
+    * Paging3
+* 架构
+    * MVVM 架构
+    * Repository 设计模式
+    * Data Mapper 数据映射
+* 使用 Composing builds 作为依赖库的版本管理
+* JDataBinding 是基于 DataBinding 封装的库
 
 ### Paging3SimpleWithNetWork
 
-`Paging3SimpleWithNetWork` 是基于 Jetpack 成员 `Paging 3` 开发的加载网络数据的示例应用，结构同项目 `Paging3Simple`
+`Paging3SimpleWithNetWork` 是基于 Jetpack 成员 `Paging 3` 开发的加载网络数据的示例应用。
+
+**Paging3SimpleWithNetWork 涉及的技术栈：**
+
+* 基于 kotlin 和 协程
+* 使用 koin 作为依赖注入库
+* JetPack
+    * LiveData
+    * Lifecycle
+    * ViewModel
+    * Paging3
+* Retrofit 作为网络框架
+* 架构
+    * MVVM 架构
+    * Repository 设计模式
+    * Data Mapper 数据映射
+* 使用 Composing builds 作为依赖库的版本管理
+* JDataBinding 是基于 DataBinding 封装的库
+
 
 关于 `Paging3SimpleWithNetWork` 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
 
@@ -68,6 +92,17 @@
 
 关于 `HiltWithAppStartupSimple` 项目分析的文章请查看 [Jetpack 新成员 Hilt 实践之 App Startup（二）进阶篇](https://juejin.im/post/5ef7638c5188252e6a532db3)
 
+### HiltWithMultiModuleSimple
+
+`HiltWithAppStartupSimple` 是基于 Jetpack 成员 Hilt 在多模块中应用的示例，项目中使用的注解都是前两篇文章介绍的内容。
+
+* [Jetpack 新成员 Hilt 实践（一）启程过坑记](https://juejin.im/post/5ef2f31951882565a94e06a5)
+* [Jetpack 新成员 Hilt 实践之 App Startup（二）进阶篇](https://juejin.im/post/5ef7638c5188252e6a532db3)
+
+关于 `HiltWithMultiModuleSimple` 项目分析的文章请查看 [Jetpack 新成员 Hilt 与 Dagger 大不同（三）落地篇](https://juejin.im/post/5efca0c1e51d4534a40d972f)
+
+> HiltSimple、HiltWithAppStartupSimple 和 HiltWithMultiModuleSimple 包含了 Hilt 所有注解的含义以及项目示例、以及和 Jetpack 组件的使用，Hilt 与 Dagger 不同之处，以及在多模块中局限性以及使用，在代码中都有详细的注释。
+
 ### VersionPlugin
 
 `VersionPlugin` 是基于 `Composing builds` 开发的自定义插件，作为整个仓库的依赖库的版本管理，使用 `Composing builds` 作为依赖库的版本管理，它有以下好处：
@@ -77,6 +112,8 @@
 * ......
 
 关于 `VersionPlugin` 的分析的文章请看 [再见吧 buildSrc, 拥抱 Composing builds 提升 Android 编译速度](https://juejin.im/post/5ed3ef906fb9a047bf7070b6)。
+
+这是关于 buildSrc 和 Composing builds 详细使用案例的代码仓库的地址 [ComposingBuilds-vs-buildSrc](https://github.com/hi-dhl/ComposingBuilds-vs-buildSrc)，在代码中都要详细的注释。
 
 ### 其他成员
 

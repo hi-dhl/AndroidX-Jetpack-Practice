@@ -22,7 +22,7 @@ object Versions {
     val room = "2.3.0-alpha01"
     val cardview = "1.0.0"
     val recyclerview = "1.0.0"
-    val fragment = "1.2.1"
+    val fragment = "1.3.0-alpha06"
     val anko = "0.10.8"
     val swiperefreshlayout = "1.0.0"
     val junit = "4.12"

@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.hi.dhl.hilt.R
 import com.hi.dhl.hilt.di.HiltSimple
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_hilt.*
 import javax.inject.Inject
 
 /**
@@ -28,6 +31,7 @@ class HiltFragment : Fragment() {
     // 使用 @Inject 注解从组件中获取依赖
     @Inject
     lateinit var mHiltSimple: HiltSimple
+    val mHiltViewModel: HiltViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,5 +44,9 @@ class HiltFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mHiltSimple.doSomething()
+
+        mHiltViewModel.mAdressLiveData.observe(viewLifecycleOwner, Observer {
+            tvAddress.setText(it)
+        })
     }
 }

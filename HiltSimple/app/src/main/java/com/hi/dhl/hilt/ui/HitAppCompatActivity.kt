@@ -31,5 +31,9 @@ class HitAppCompatActivity : AppCompatActivity() {
         mHitViewModule.mHitLiveData.observe(this, Observer {
             tvResult.setText(it)
         })
+
+        btnArgument.setOnClickListener {
+            mHitViewModule.passArgument("address : shanghai")
+        }
     }
 }

@@ -9,7 +9,17 @@
 
 ![](http://cdn.51git.cn/2020-06-19-3551539-2cae0f5a80bce069.png)
 
-本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实战项目 以及组件对应分析文章，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态，敬请期待
+本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实战项目 以及组件对应分析文章，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态，敬请期待。
+
+最新 Jetpack 实战项目 [PokemonGo](https://github.com/hi-dhl/PokemonGo)（神奇宝贝）基于 MVVM 架构和 Repository 设计模式，这是一个小型的 App 项目，涉及到技术：Paging3（network + db），Dagger-Hilt，App Startup，DataBinding，Room，Motionlayout，Kotlin Flow，Coil，JProgressView 等等。
+
+[PokemonGo 仓库地址：https://github.com/hi-dhl/PokemonGo](https://github.com/hi-dhl/PokemonGo)
+
+PokemonGo 动态效果图如下所示，如果动图无法查看，请点击这里查看 [动态效果图](http://cdn.51git.cn/2020-07-12-15945313937044.gif) [静态图](http://cdn.51git.cn/2020-07-14-Pokemon.png)
+
+<p align="center">
+<img src="http://cdn.51git.cn/2020-07-12-15945313937044.gif" height = 500/> 
+</p>
 
 ## 仓库 Jetpack Jetpack 项目介绍
 
@@ -55,6 +65,8 @@
 
 `Paging3SimpleWithNetWork` 是基于 Jetpack 成员 `Paging 3` 开发的加载网络数据的示例应用。
 
+关于 `Paging3SimpleWithNetWork` 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
+
 **Paging3SimpleWithNetWork 涉及的技术栈：**
 
 * 基于 kotlin 和 协程
@@ -71,9 +83,6 @@
     * Data Mapper 数据映射
 * 使用 Composing builds 作为依赖库的版本管理
 * JDataBinding 是基于 DataBinding 封装的库
-
-
-关于 `Paging3SimpleWithNetWork` 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
 
 ### HiltSimple
 

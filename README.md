@@ -15,10 +15,10 @@
 
 [PokemonGo 仓库地址：https://github.com/hi-dhl/PokemonGo](https://github.com/hi-dhl/PokemonGo)
 
-PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查看 [动态效果图](http://cdn.51git.cn/2020-07-12-15945313937044.gif) | [静态图](http://cdn.51git.cn/2020-07-14-Pokemon.png)
+PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查看 [动态效果图](http://cdn.51git.cn/2020-07-14-15946978385391.gif) | [静态图](http://cdn.51git.cn/2020-07-14-PokemonGo2.png)
 
 <p align="center">
-<img src="http://cdn.51git.cn/2020-07-14-Pokemon.png"/> 
+<img src="http://cdn.51git.cn/2020-07-14-PokemonGo2.png"/> 
 </p>
 
 ## 仓库 Jetpack Jetpack 项目介绍

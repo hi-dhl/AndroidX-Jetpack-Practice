@@ -1,7 +1,7 @@
 package com.hi.dhl.startup.simple
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.startup.AppInitializer
 import com.hi.dhl.startup.library.LibaryD
 import kotlinx.android.synthetic.main.activity_main.*

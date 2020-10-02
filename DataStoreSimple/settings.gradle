@@ -1,2 +1,3 @@
+includeBuild("../VersionPlugin")
 include ':app'
 rootProject.name = "DataStoreSimple"

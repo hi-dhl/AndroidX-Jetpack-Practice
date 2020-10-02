@@ -1,6 +1,8 @@
 package com.hi.dhl.datastore.di
 
 import android.content.Context
+import com.hi.dhl.datastore.data.DataStoreRepository
+import com.hi.dhl.datastore.data.IDataStoreRepository
 import com.hi.dhl.datastore.data.IRepository
 import com.hi.dhl.datastore.data.SharedPreferencesRepository
 import dagger.Module
@@ -26,5 +28,11 @@ class RepositoryModule {
     @Singleton
     fun provideSharedPreferencesRepository(@ApplicationContext ctx: Context): IRepository {
         return SharedPreferencesRepository(ctx)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDataStoreRepository(@ApplicationContext ctx: Context): IDataStoreRepository {
+        return DataStoreRepository(ctx)
     }
 }

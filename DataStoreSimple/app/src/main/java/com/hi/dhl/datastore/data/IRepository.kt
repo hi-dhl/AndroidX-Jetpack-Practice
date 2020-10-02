@@ -8,6 +8,7 @@ package com.hi.dhl.datastore.data
  * </pre>
  */
 interface IRepository {
-    fun saveData(key: String, isChecked: Boolean)
+
+    fun saveData(key: String)
     fun readData(key: String): Boolean
 }

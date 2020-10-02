@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.DataStoreActivity"
+            android:name=".ui.MainActivity"
             android:label="DataStoreActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -90,21 +90,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_20dp"
-        android:layout_marginTop="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_30dp"
         android:layout_marginEnd="@dimen/margin_20dp"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnMrge"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="迁移 SharedPreferences 到  DataStore" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchStore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:checked="false" />
+            android:textAllCaps="false"
+            android:text="迁移 SharedPreferences 到  DataStore"/>
 
     </RelativeLayout>
 

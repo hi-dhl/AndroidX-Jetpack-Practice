@@ -9,6 +9,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  *     author: dhl
  *     date  : 2020/10/2
  *     desc  :
+ *
+ *     SharedPreferences 文件存放目录: /data/data/<包名>/shared_prefs
+ *     hi-dhl 的公众号：ByteCode
+ *
  * </pre>
  */
 @OptIn(ExperimentalCoroutinesApi::class)

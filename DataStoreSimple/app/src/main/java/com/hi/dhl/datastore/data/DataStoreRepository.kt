@@ -13,6 +13,10 @@ import java.io.IOException
  *     author: dhl
  *     date  : 2020/10/2
  *     desc  :
+ *
+ *     DataStore 文件存放目录: /data/data/<包名>/files/datastore
+ *     hi-dhl 的公众号：ByteCode
+ *
  * </pre>
  */
 

@@ -33,6 +33,7 @@ object Versions {
     val hit = "2.28-alpha"
     val hitViewModule = "1.0.0-alpha01"
     val appStartup = "1.0.0-alpha01"
+    val DataStore = "1.0.0-alpha01"
 }
 
 object AndroidX {
@@ -57,6 +58,10 @@ object Hilt {
     val daggerCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hit}"
     val viewModule = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hitViewModule}"
     val compiler = "androidx.hilt:hilt-compiler:${Versions.hitViewModule}"
+}
+
+object DataStore{
+    val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.DataStore}"
 }
 
 object Coil {

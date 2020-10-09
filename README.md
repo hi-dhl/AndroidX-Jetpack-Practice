@@ -4,10 +4,28 @@
 <p align="center"> 本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实践项目 以及组件对应的分析文章 </p>
 
 <p align="center">
-<a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a>  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/> <img src="https://img.shields.io/badge/Jetpack-AppStartup | Paging3 | Hilt -8633FF.svg"/> <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
+<a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a>  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/>  <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
+<br/>
+<img src="https://img.shields.io/badge/Jetpack-AppStartup | Paging3 | Hilt | DataStore -8633FF.svg"/>
 </p>
 
 ![](http://cdn.51git.cn/2020-06-19-3551539-2cae0f5a80bce069.png)
+
+## 仓库目录结构介绍
+
+```
+AndroidX-Jetpack-Practice
+├── AppStartupSimple                // App Startup 示例应用
+├── Paging3Simple                   // Paging 3 加载本地数据库的示例应用
+├── Paging3SimpleWithNetWork        // Paging 3 加载网络数据的示例应用
+├── HiltSimple                      // Hilt 全部注解的实例应用
+├── HiltWithAppStartupSimple        // Hilt 结合了 App Startup 和 ViewModel 等等示例应用
+├── HiltWithMultiModuleSimple       // Hilt 在多模块中的示例应用
+├── DataStoreSimple                 // DataStoreSimple 的示例应用
+├── VersionPlugin                   // 整个仓库的依赖库的版本管理
+```
+
+## 仓库项目介绍
 
 本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实战项目 以及组件对应分析文章，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态，敬请期待。
 
@@ -21,7 +39,7 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 <img src="http://cdn.51git.cn/2020-07-14-PokemonGo2.png"/> 
 </p>
 
-## 仓库 Jetpack Jetpack 项目介绍
+
 
 ### AppStartupSimple
 
@@ -112,6 +130,16 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 > HiltSimple、HiltWithAppStartupSimple 和 HiltWithMultiModuleSimple 包含了 Hilt 所有注解的含义以及项目示例、以及和 Jetpack 组件的使用，Hilt 与 Dagger 不同之处，以及在多模块中局限性以及使用，在代码中都有详细的注释。
 
+### DataStoreSimple
+
+`DataStoreSimple` 是基于 Jetpack 成员 DataStore 在应用使用的示例，主要包括下面三方面内容
+
+* DataStore 解决了什么问题
+* 如何使用 Preferences DataStore
+* 如何迁移 迁移 SharedPreferences 到 DataStore
+
+关于 `DataStoreSimple` 项目分析的文章请查看 [再见 SharedPreferences 拥抱 Jetpack DataStore](https://juejin.im/post/6881442312560803853)
+
 ### VersionPlugin
 
 `VersionPlugin` 是基于 `Composing builds` 开发的自定义插件，作为整个仓库的依赖库的版本管理，使用 `Composing builds` 作为依赖库的版本管理，它有以下好处：
@@ -128,28 +156,26 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 其他组件成员陆续增加中......敬请期待
 
-## 结语
+### 联系我
 
-致力于分享一系列 Android 系统源码、逆向分析、算法、翻译、Jetpack 源码相关的文章，正在努力写出更好的文章，如果这篇文章对你有帮助给个 star，文章中有什么没有写明白的地方，或者有什么更好的建议欢迎留言，欢迎一起来学习，在技术的道路上一起前进。
+* 个人微信：hi-dhl
+* 公众号：ByteCode，包含 Jetpack ，Kotlin ，Android 10 系列源码，译文，LeetCode / 剑指 Offer / 多线程 / 国内外大厂算法题 等等一系列文章
 
-> 计划建立一个最全、最新的 AndroidX Jetpack 相关组件的实战项目 以及 相关组件原理分析文章，正在逐渐增加 Jetpack 新成员，仓库持续更新，可以前去查看：[AndroidX-Jetpack-Practice](https://github.com/hi-dhl/AndroidX-Jetpack-Practice), 如果这个仓库对你有帮助，请帮我点个赞，我会陆续完成更多 Jetpack 新成员的项目实践。
+<img src='http://cdn.51git.cn/2020-10-03-wechat.png' width = 400px/>
 
-### Android10 源码分析
+---
 
-正在写一系列的 Android 10 源码分析的文章，了解系统源码，不仅有助于分析问题，在面试过程中，对我们也是非常有帮助的，如果你同我一样喜欢研究 Android 源码，可以关注我 GitHub 上的 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)。
+最后推荐我一直在更新维护的项目和网站：
 
-### 算法题库的归纳和总结
+* 计划建立一个最全、最新的 AndroidX Jetpack 相关组件的实战项目 以及 相关组件原理分析文章，正在逐渐增加 Jetpack 新成员，仓库持续更新，欢迎前去查看：[AndroidX-Jetpack-Practice](https://github.com/hi-dhl/AndroidX-Jetpack-Practice)
 
-由于 LeetCode 的题库庞大，每个分类都能筛选出数百道题，由于每个人的精力有限，不可能刷完所有题目，因此我按照经典类型题目去分类、和题目的难易程度去排序。
+* 最新 Android 10 源码分析系列文章，了解系统源码，不仅有助于分析问题，在面试过程中，对我们也是非常有帮助的，仓库持续更新，欢迎前去查看 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)
 
-* 数据结构： 数组、栈、队列、字符串、链表、树……
-* 算法： 查找算法、搜索算法、位运算、排序、数学、……
+* 整理和翻译一系列精选国外的技术文章，每篇文章都会有**译者思考**部分，对原文的更加深入的解读，仓库持续更新，欢迎前去查看 [Technical-Article-Translation](https://github.com/hi-dhl/Technical-Article-Translation)
 
-每道题目都会用 Java 和 kotlin 去实现，并且每道题目都有解题思路，如果你同我一样喜欢算法、LeetCode，可以关注我 GitHub 上的 LeetCode 题解：[Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin)。
+* LeetCode / 剑指 Offer / 国内外大厂面试题，涵盖： 多线程、数组、栈、队列、字符串、链表、树，查找算法、搜索算法、位运算、排序等等，每道题目都会用 Java 和 kotlin 去实现，仓库持续更新，欢迎前去查看 [Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin)
 
-### 精选国外的技术文章
-
-目前正在整理和翻译一系列精选国外的技术文章，不仅仅是翻译，很多优秀的英文技术文章提供了很好思路和方法，每篇文章都会有**译者思考**部分，对原文的更加深入的解读，可以关注我 GitHub 上的 [Technical-Article-Translation](https://github.com/hi-dhl/Technical-Article-Translation)。
+* 「为互联网人而设计，国内国外名站导航」涵括新闻、体育、生活、娱乐、设计、产品、运营、前端开发、Android 开发等等网址，[为互联网人而设计，国内国外名站导航](https://site.51git.cn)
 
 ## License
 

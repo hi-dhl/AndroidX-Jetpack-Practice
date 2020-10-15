@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.29.1-alpha'
         // NOTE: Do not place your application dependencies here; they belong
@@ -14,13 +14,19 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
+
+/**
+ * plugins {} 默认的行为是解析和应用插件
+ * apply false 告诉 Gradle 不要应用插件
+ * 在多项目构建中，可以通过 subprojects{} 应用在子项目中
+ */
+plugins {
+    // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的id
+    id "com.hi.dhl.plugin" apply false
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+/**
+ * 在多项目构建中，可以通过 subprojects{} 应用在子项目中，细节查看 subproject.gradle
+ */
+apply from: '../subproject.gradle'
+

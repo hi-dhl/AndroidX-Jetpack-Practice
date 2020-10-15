@@ -1,3 +1,4 @@
+import com.hi.dhl.plugin.*
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -26,17 +27,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation "androidx.startup:startup-runtime:1.0.0-alpha01"
+    implementation Kt.stdlibJdk8
+    implementation AndroidX.coreKtx
+    implementation AndroidX.appcompat
+    implementation AndroidX.constraintlayout
+    implementation AndroidX.appStartup
 
     implementation(project(":Startup-Library"))
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    testImplementation Depend.junit
+    androidTestImplementation Depend.androidTestJunit
+    androidTestImplementation Depend.espressoCore
 }
-
-apply from: '../../spotless.gradle'

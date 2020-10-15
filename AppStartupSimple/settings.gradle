@@ -1,3 +1,4 @@
+includeBuild("../VersionPlugin")
 include ':Startup-Library'
 include ':ContentProvider'
 include ':app'

@@ -14,13 +14,16 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
+
+/**
+ * 如果在多项目构建中，可能想把插件应用到子项目中，apply false 来告诉 Gradle 不要应用插件
+ *
+ * plugins {} 默认的行为是解析和应用插件
+ */
+plugins {
+    // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的id
+    id "com.hi.dhl.plugin" apply false
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+apply from: '../subproject.gradle'
+

@@ -1,13 +1,5 @@
-import com.hi.dhl.plugin.Anko
-import com.hi.dhl.plugin.BuildConfig
-import com.hi.dhl.plugin.Hilt
-import com.hi.dhl.plugin.Kt
-import com.hi.dhl.plugin.Room
+import com.hi.dhl.plugin.*
 
-plugins {
-    // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的id
-    id "com.hi.dhl.plugin"
-}
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'

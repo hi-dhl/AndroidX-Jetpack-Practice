@@ -2,9 +2,8 @@ apply plugin: "com.diffplug.gradle.spotless"
 spotless {
     kotlin {
         target '**/*.kt'
-        ktlint()
+        ktlint('0.39.0').userData(['disabled_rules' : 'no-wildcard-imports','indent_size': '2', 'continuation_indent_size': '2'])
         trimTrailingWhitespace()
-        indentWithSpaces()
         endWithNewline()
     }
 }

@@ -1,0 +1,25 @@
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+subprojects { subproject ->
+    // 应用所有子项目中
+    apply plugin: 'com.hi.dhl.plugin'
+
+    // 如果想应用到某个子项目中，可以通过 subproject.name 来判断应用在哪个子项目中
+    // subproject.name 是你子项目的名字
+    // 官方文档地址：https://guides.gradle.org/creating-multi-project-builds/#add_documentation
+    if (subproject.name == "app") {
+        // 示例可以点击下方链接，查看我另外一个项目
+        // https://github.com/hi-dhl/ComposingBuilds-vs-buildSrc/blob/a339c8a24764f8fd212768286cc941aaac48b4ad/Project-ComposingBuild/build.gradle#L20-L50
+    
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

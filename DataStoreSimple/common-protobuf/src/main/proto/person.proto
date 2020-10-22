@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option java_package = "com.hi.dhl.datastore.protobuf";
+option java_outer_classname = "PersonProtos";
+
+message Person {
+  int32 age = 1;
+}

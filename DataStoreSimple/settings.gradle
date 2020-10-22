@@ -1,3 +1,4 @@
+include ':common-protobuf'
 includeBuild("../VersionPlugin")
 include ':app'
 rootProject.name = "DataStoreSimple"

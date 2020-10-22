@@ -34,6 +34,7 @@ object Versions {
     val hitViewModule = "1.0.0-alpha01"
     val appStartup = "1.0.0-alpha01"
     val DataStore = "1.0.0-alpha01"
+    val javalite = "3.8.0"
 }
 
 object AndroidX {
@@ -60,8 +61,13 @@ object Hilt {
     val compiler = "androidx.hilt:hilt-compiler:${Versions.hitViewModule}"
 }
 
-object DataStore{
+object DataStore {
     val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.DataStore}"
+    val datastoreProto = "androidx.datastore:datastore-core:${Versions.DataStore}"
+}
+
+object Protobuf {
+    val javalite = "com.google.protobuf:protobuf-javalite:${Versions.javalite}"
 }
 
 object Coil {

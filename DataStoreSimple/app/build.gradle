@@ -66,6 +66,9 @@ dependencies {
     kapt Hilt.compiler
 
     implementation DataStore.datastorePreferences
+    implementation DataStore.datastoreProto
+    implementation Protobuf.javalite
+    implementation project(':common-protobuf')
 
     testImplementation Depend.junit
     androidTestImplementation Depend.androidTestJunit

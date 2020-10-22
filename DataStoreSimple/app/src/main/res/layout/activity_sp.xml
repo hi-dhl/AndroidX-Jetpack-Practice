@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingLeft="@dimen/space_10dp"
-    android:paddingRight="@dimen/space_10dp"
-    android:paddingTop="@dimen/space_30dp">
+    android:paddingTop="@dimen/space_30dp"
+    android:paddingRight="@dimen/space_10dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_20dp"
-        android:text="use Jetpack DataStore" />
+        android:text="use Preferences DataStore" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -98,9 +98,114 @@
             android:id="@+id/btnMrge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="迁移 SharedPreferences 到  DataStore"/>
+            android:text="迁移 SharedPreferences 到  DataStore"
+            android:textAllCaps="false" />
 
     </RelativeLayout>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:text="use Proto DataStore" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="输入名字：" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hi-dhl.com"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="输入年龄：" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPersonAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关注公众号：ByteCode?" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:checked="false" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveProtoData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="使用 Proto DataStore 保存数据 "
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvListener"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginEnd="@dimen/margin_20dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnMrgeProto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="迁移 SharedPreferences 到  Proto DataStore"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
 </LinearLayout>

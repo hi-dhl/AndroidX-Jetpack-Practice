@@ -1,10 +1,27 @@
 import com.hi.dhl.plugin.*
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+/**
+ * plugins 和 apply plugin 的区别：
+ *
+ * plugins 是一种比较新的方法，它所引用的插件必须在 Gradle plugin repository 的仓库可见的
+ * apply plugin 是一种比较老的方式，在 Android4.1 的时候，创建项目的时候，已经将 apply plugin 方法替换为 plugins
+ *
+ */
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+// 或者使用下面的方式，但是不建议使用
+
+//apply plugin: 'com.android.application'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-kapt'
+//apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29

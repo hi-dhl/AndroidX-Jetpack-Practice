@@ -4,5 +4,26 @@ option java_package = "com.hi.dhl.datastore.protobuf";
 option java_outer_classname = "PersonProtos";
 
 message Person {
-  int32 age = 1;
+    // 格式：字段类型 + 字段名称 + 字段编号
+    string name = 1;
+    int32 age = 2;
+    bool followAccount = 3;
+    repeated string phone = 4;
+
+
+    message Address{
+        string city = 1;
+    }
+    Address address = 5;
+
+    enum Weekday{
+        SUN = 0;
+        MON = 1;
+        TUE = 2;
+        WED = 3;
+        THU = 4;
+        FRI = 5;
+        SAT = 6;
+    }
+    Weekday weekday = 6;
 }

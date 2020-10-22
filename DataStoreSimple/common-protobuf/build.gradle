@@ -1,48 +1,45 @@
+/**
+ * plugins 和 apply plugin 的区别：
+ * plugins 是一种比较新的方法，它所引用的插件必须在 Gradle plugin repository 的仓库可见的
+ * apply plugin 是一种比较老的方式，在 Android4.1 的时候，创建项目的时候，已经将 apply plugin 方法替换为 plugins
+ *
+ */
+
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
-    id 'com.google.protobuf'
+    id "com.google.protobuf" version "0.8.12"
 }
+
+// 或者使用下面的方式，但是不建议使用
+//apply plugin: 'com.android.library'
+//apply plugin: "com.google.protobuf"
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
 
-    defaultConfig {
-        minSdkVersion 26
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    // 设置 proto 文件位置
+    sourceSets {
+        main {
+            proto {
+                // proto 文件默认路径是 src/main/proto
+                // 可以通过 srcDir 修改 proto 文件的位置
+                srcDir 'src/main/proto'
+            }
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
 }
 
 
 /**
- * 注意 protobuf 的配置 3.0.x ~ 3.7.x 和 3.8 以后 的配置，网上大部分都是 3.0.x ~ 3.7.x 的配置方式
- * 官方地址： https://github.com/google/protobuf-gradle-plugin
+ * 注意配置 protoc 命令，分为不同的版本，版本不同配置的方式不同，
+ * 网上大部分都是 3.0.x ~ 3.7.x 的配置方式，关于这种配置方法，可以查看 [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin)  文档，这里不在演示了，也不建议使用
  * 在此项目中使用的是 3.8 以后 的配置的配置，
  */
 protobuf {
+    // 设置 protoc 的版本
     protoc {
-        // 这里的版本号需要与依赖 com.google.protobuf:protobuf-javalite:xxx 版本相同
-        artifact = 'com.google.protobuf:protoc:3.8.0'
+        // //从仓库下载 protoc 这里的版本号需要与依赖 com.google.protobuf:protobuf-javalite:xxx 版本相同
+        artifact = 'com.google.protobuf:protoc:3.10.0'
     }
     generateProtoTasks {
         all().each { task ->
@@ -58,15 +55,7 @@ protobuf {
     generatedFilesBaseDir = "$projectDir/src/main"
 }
 
+// 添加 protobuf 需要的依赖，这里是用的是 javalite 版本
 dependencies {
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation "com.google.protobuf:protobuf-javalite:3.8.0"
-
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "com.google.protobuf:protobuf-javalite:3.10.0"
 }

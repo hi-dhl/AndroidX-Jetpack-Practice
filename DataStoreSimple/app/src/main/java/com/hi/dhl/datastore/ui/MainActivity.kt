@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import com.hi.dhl.datastore.R
+import com.hi.dhl.datastore.protobuf.PersonProtos
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_sp.*
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 /**
@@ -36,9 +36,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             setOnClickListener(this@MainActivity)
         }
 
-        switchWeiBo.setOnClickListener(this@MainActivity)
-        switchGitHub.setOnClickListener(this@MainActivity)
+        switchWeiBo.setOnClickListener(this)
+        switchGitHub.setOnClickListener(this)
         btnMrge.setOnClickListener(this)
+        btnSaveProtoData.setOnClickListener(this)
+        btnMrgeProto.setOnClickListener(this)
 
         initObserve()
     }
@@ -56,6 +58,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             .observe(this@MainActivity) {
                 switchGitHub.isChecked = it
             }
+
+        mainViewModel.getProtoDataStoreForPerson().observe(this@MainActivity) {
+            fillData(it)
+        }
     }
 
     override fun onClick(v: View) {
@@ -74,7 +80,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 Toast.makeText(this@MainActivity, "迁移成功", Toast.LENGTH_SHORT).show()
             }
+            btnSaveProtoData -> mainViewModel.saveProtoDataStoreForPerson(
+                PersonModel(
+                    age = etPersonAge.text.toString().toIntOrNull() ?: 0,
+                    name = etPersonName.text.toString()
+                )
+            )
+            btnMrgeProto -> {
+                mainViewModel.migrationSP2ProtoDataStore()
+                // 这里是为了测试迁移是否成功，必须执行一次读取或者写入
+                mainViewModel.getProtoDataStoreForPerson().observe(this@MainActivity) {
+                    fillData(it)
+                }
+                Toast.makeText(this@MainActivity, "迁移成功", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+    fun fillData(person: PersonProtos.Person) {
+        etPersonAge.setText(person.age.toString())
+        etPersonName.setText(person.name.ifEmpty { "hi-dhl.com" })
+        follow.isChecked = person.followAccount
+        tvListener.setText("测试监听保存和迁移结果 \n:  ${person}")
     }
 
     companion object {

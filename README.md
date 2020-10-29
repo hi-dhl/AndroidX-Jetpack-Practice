@@ -9,21 +9,42 @@
 <img src="https://img.shields.io/badge/Jetpack-AppStartup | Paging3 | Hilt | DataStore -8633FF.svg"/>
 </p>
 
-![](http://cdn.51git.cn/2020-06-19-3551539-2cae0f5a80bce069.png)
+<!--![](http://cdn.51git.cn/2020-06-19-3551539-2cae0f5a80bce069.png)-->
 
 ## 仓库目录结构介绍
 
 ```
 AndroidX-Jetpack-Practice
+│
 ├── AppStartupSimple                // App Startup 示例应用
+│
 ├── Paging3Simple                   // Paging 3 加载本地数据库的示例应用
+│
 ├── Paging3SimpleWithNetWork        // Paging 3 加载网络数据的示例应用
+│
 ├── HiltSimple                      // Hilt 全部注解的实例应用
+│
 ├── HiltWithAppStartupSimple        // Hilt 结合了 App Startup 和 ViewModel 等等示例应用
+│
 ├── HiltWithMultiModuleSimple       // Hilt 在多模块中的示例应用
+│
 ├── DataStoreSimple                 // DataStoreSimple 的示例应用
+│    │
+│    ├── main(master) 分支           // Preferences DataStore 的使用
+│    ├── datastore_proto 分支        // Proto DataStore 的使用
+│
 ├── VersionPlugin                   // 整个仓库的依赖库的版本管理
 ```
+
+关于每个项目的文章分析，以及这些技术在项目中如何使用，在后文会详细的介绍，请往后看，如果有帮助，帮我在**右上角 star 一下** 就是对我最大的鼓励！
+
+**联系我**
+
+* 个人微信：hi-dhl
+* 公众号：ByteCode，包含 Jetpack ，Kotlin ，Android 10 系列源码，译文，LeetCode / 剑指 Offer / 多线程 / 国内外大厂算法题 等等一系列文章
+
+<img src='http://cdn.51git.cn/2020-10-20-151047.png' width = 350px/>
+
 
 ## 仓库项目介绍
 
@@ -132,13 +153,36 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 ### DataStoreSimple
 
-`DataStoreSimple` 是基于 Jetpack 成员 DataStore 在应用使用的示例，主要包括下面三方面内容
 
-* DataStore 解决了什么问题
-* 如何使用 Preferences DataStore
-* 如何迁移 迁移 SharedPreferences 到 DataStore
+`DataStoreSimple` 是基于 Jetpack 成员 DataStore 在应用使用的示例，DataStore 主要用来替换 SharedPreferences，而 Jetpack DataStore 有两种实现方式：
 
-关于 `DataStoreSimple` 项目分析的文章请查看 [再见 SharedPreferences 拥抱 Jetpack DataStore](https://juejin.im/post/6881442312560803853)
+* Preferences DataStore：以键值对的形式存储在本地和 SharedPreferences 类似
+
+    **main(master) 分支包含了 Preferences DataStore 的使用**，主要包括下面三方面内容
+    
+    * DataStore 解决了什么问题
+    * 如何使用 Preferences DataStore
+    * 如何迁移 迁移 SharedPreferences 到 DataStore
+
+    项目分析的文章请查看 [再见 SharedPreferences 拥抱 Jetpack DataStore](https://juejin.im/post/6881442312560803853)
+    
+* Proto DataStore：存储类的对象（typed objects ），通过 protocol buffers 将对象序列化存储在本地
+    
+    **datastore_proto 分支包含了 Proto DataStore 使用示例**，主要包括下面三方面内容
+    
+    * 为何要有 Proto DataStore?
+    * 如何在项目中使用 Proto DataStore？
+    * 如何迁移 SharedPreferences 到 Proto DataStore？
+    * 常用 proto3 语法解析？
+
+    项目分析的文章请查看 [再见 SharedPreferences 拥抱 DataStore (二)](https://juejin.im/post/6888847647802097672)
+
+
+**Jetpack DataStore 基于 Protobuf 实现的，点击下方连接前往查看：**
+
+* [Protobuf | 安装 Gradle 插件编译 proto 文件](https://hi-dhl.com/2020/10/28/jetpack/05-probuff-AndroidStudio)
+* [Protobuf | 如何在 ubuntu 上安装 Protobuf 编译 proto 文件](https://hi-dhl.com/2020/10/28/android/04-probuff-ubuntu)
+* [Protobuf | 如何在 MAC 上安装 Protobuf 编译 proto 文件](https://hi-dhl.com/2020/10/28/android/05-probuff-mac)
 
 ### VersionPlugin
 
@@ -155,13 +199,6 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 ### 其他成员
 
 其他组件成员陆续增加中......敬请期待
-
-### 联系我
-
-* 个人微信：hi-dhl
-* 公众号：ByteCode，包含 Jetpack ，Kotlin ，Android 10 系列源码，译文，LeetCode / 剑指 Offer / 多线程 / 国内外大厂算法题 等等一系列文章
-
-<img src='http://cdn.51git.cn/2020-10-20-151047.png' width = 350px/>
 
 ---
 

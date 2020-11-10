@@ -1,7 +1,7 @@
 # <p align="center"> AndroidX-Jetpack-Practice </p>
 
-<p align="center"> 仓库持续更新中，如果对你有帮助，请在右上角 star 一下</p>
-<p align="center"> 本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实践项目 以及组件对应的分析文章 </p>
+<p align="center"> 仓库持续更新中，如果对你有帮助，请在右上角 star 一下，感谢！！！</p>
+<p align="center"> 本仓库致力于建立最全、最新的 <b>AndroidX Jetpack 组件实践项目</b> 以及<b>组件对应的分析文章</b> </p>
 
 <p align="center">
 <a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a>  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a> <img src="https://img.shields.io/badge/language-kotlin-orange.svg"/>  <img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
@@ -11,7 +11,7 @@
 
 <!--![](http://cdn.51git.cn/2020-06-19-3551539-2cae0f5a80bce069.png)-->
 
-## 仓库目录结构介绍
+## <p align="center"> 仓库目录结构介绍 </p>
 
 ```
 AndroidX-Jetpack-Practice
@@ -46,9 +46,7 @@ AndroidX-Jetpack-Practice
 <img src='http://cdn.51git.cn/2020-10-20-151047.png' width = 350px/>
 
 
-## 仓库项目介绍
-
-本仓库致力于建立最全、最新的的 AndroidX Jetpack 相关组件的实战项目 以及组件对应分析文章，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态，敬请期待。
+## <p align="center"> 综合实战项目 </p>
 
 最新 Jetpack 实战项目 [PokemonGo](https://github.com/hi-dhl/PokemonGo)（神奇宝贝）基于 MVVM 架构和 Repository 设计模式，这是一个小型的 App 项目，涉及到技术：Paging3（network + db），Dagger-Hilt，App Startup，DataBinding，Room，Motionlayout，Kotlin Flow，Coil，JProgressView 等等。
 
@@ -60,9 +58,27 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 <img src="http://cdn.51git.cn/2020-07-14-PokemonGo2.png"/> 
 </p>
 
+## <p align="center"> 仓库项目介绍 </p>
+
+仓库 `AndroidX-Jetpack-Practice` 致力于建立最全、最新的 **AndroidX Jetpack 组件的实战项目** 以及 **组件对应分析文章**，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态。
+
+### <p align="center"> DataStoreSimple </p>
 
 
-### AppStartupSimple
+`DataStoreSimple` 是基于 Jetpack 成员 DataStore 在应用使用的示例，DataStore 主要用来替换 SharedPreferences，而 Jetpack DataStore 有两种实现方式：
+
+* Preferences DataStore：以键值对的形式存储在本地和 SharedPreferences 类似，**main(master) 分支包含了 Preferences DataStore 的使用**，项目分析的文章请查看 [再见 SharedPreferences 拥抱 Jetpack DataStore（一）](https://juejin.im/post/6881442312560803853)
+    
+* Proto DataStore：存储类的对象（typed objects ），通过 protocol buffers 将对象序列化存储在本地，**datastore_proto 分支包含了 Proto DataStore 使用示例**，项目分析的文章请查看 [再见 SharedPreferences 拥抱 DataStore (二)](https://juejin.im/post/6888847647802097672)
+
+
+**Proto DataStore 基于 Protobuf 实现的，Protobuf 环境配置点击下方连接前往查看：**
+
+* [Protobuf | 安装 Gradle 插件编译 proto 文件](https://hi-dhl.com/2020/10/28/jetpack/05-probuff-AndroidStudio)
+* [Protobuf | 如何在 ubuntu 上安装 Protobuf 编译 proto 文件](https://hi-dhl.com/2020/10/28/android/04-probuff-ubuntu)
+* [Protobuf | 如何在 MAC 上安装 Protobuf 编译 proto 文件](https://hi-dhl.com/2020/10/28/android/05-probuff-mac)
+
+### <p align="center"> AppStartupSimple </p>
 
 `AppStartupSimple` 是基于 Jetpack 成员 `App Startup` 开发的一个示例应用，`App Startup` 提供了一个 `ContentProvider` 来运行所有依赖项的初始化，避免每个第三方库单独使用 `ContentProvider` 进行初始化，从而提高了 App 的启动速度。
  
@@ -72,7 +88,7 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 关于 `AppStartupSimple` 分析的文章请看 [App Startup 实践以及原理分析](https://juejin.im/post/5ee4bbe4f265da76b559bdfe)
 
-### Paging3Simple
+### <p align="center"> Paging3Simple </p>
 
 `Paging3Simple` 是基于 Jetpack 成员 `Paging 3` 开发的加载本地数据库的示例应用，`Paging 3` 是一个分页库，它可以帮助您从本地存储或通过网络加载和显示数据。这种方法使你的 App 更有效地使用网络带宽和系统资源，而 `Paging3` 是使用 `Kotlin` 协程完全重写的库：
 
@@ -83,7 +99,7 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 关于 `Paging3Simple` 加载本地数据分析的文章请看 [Jetpack 成员 Paging 3 实践以及原理分析（一）](https://juejin.im/post/5ee998e8e51d4573d65df02b)
 
-**Paging3Simple 涉及的技术栈：**
+<!--**Paging3Simple 涉及的技术栈：**
 
 * 基于 kotlin 和 协程
 * 使用 koin 作为依赖注入库
@@ -99,14 +115,15 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
     * Data Mapper 数据映射
 * 使用 Composing builds 作为依赖库的版本管理
 * JDataBinding 是基于 DataBinding 封装的库
+-->
 
-### Paging3SimpleWithNetWork
+### <p align="center"> Paging3SimpleWithNetWork </p>
 
 `Paging3SimpleWithNetWork` 是基于 Jetpack 成员 `Paging 3` 开发的加载网络数据的示例应用。
 
 关于 `Paging3SimpleWithNetWork` 加载网络数据分析的文章请看 [Jetpack 新成员 Paging3 网络实践及原理分析（二）](https://juejin.im/post/5eeefbf4e51d45742c53ddce)
 
-**Paging3SimpleWithNetWork 涉及的技术栈：**
+<!--**Paging3SimpleWithNetWork 涉及的技术栈：**
 
 * 基于 kotlin 和 协程
 * 使用 koin 作为依赖注入库
@@ -121,9 +138,9 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
     * Repository 设计模式
     * Data Mapper 数据映射
 * 使用 Composing builds 作为依赖库的版本管理
-* JDataBinding 是基于 DataBinding 封装的库
+* JDataBinding 是基于 DataBinding 封装的库-->
 
-### HiltSimple
+### <p align="center"> HiltSimple </p>
 
 `HiltSimple` 是基于 Jetpack 成员 Hilt 开发的示例应用。
 
@@ -132,7 +149,7 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 关于 `HiltSimple` 项目分析的文章请查看 [Jetpack 新成员 Hilt 实践（一）启程过坑记](https://juejin.im/post/5ef2f31951882565a94e06a5)
 
-### HiltWithAppStartupSimple
+### <p align="center"> HiltWithAppStartupSimple </p>
 
 `HiltWithAppStartupSimple` 是基于 Jetpack 成员 Hilt 开发的示例应用，结合了 `App Startup`、`ViewModel` 等等。
 
@@ -140,51 +157,15 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 关于 `HiltWithAppStartupSimple` 项目分析的文章请查看 [Jetpack 新成员 Hilt 实践之 App Startup（二）进阶篇](https://juejin.im/post/5ef7638c5188252e6a532db3)
 
-### HiltWithMultiModuleSimple
+### <p align="center"> HiltWithMultiModuleSimple </p>
 
 `HiltWithAppStartupSimple` 是基于 Jetpack 成员 Hilt 在多模块中应用的示例，项目中使用的注解都是前两篇文章介绍的内容。
-
-* [Jetpack 新成员 Hilt 实践（一）启程过坑记](https://juejin.im/post/5ef2f31951882565a94e06a5)
-* [Jetpack 新成员 Hilt 实践之 App Startup（二）进阶篇](https://juejin.im/post/5ef7638c5188252e6a532db3)
 
 关于 `HiltWithMultiModuleSimple` 项目分析的文章请查看 [Jetpack 新成员 Hilt 与 Dagger 大不同（三）落地篇](https://juejin.im/post/5efca0c1e51d4534a40d972f)
 
 > HiltSimple、HiltWithAppStartupSimple 和 HiltWithMultiModuleSimple 包含了 Hilt 所有注解的含义以及项目示例、以及和 Jetpack 组件的使用，Hilt 与 Dagger 不同之处，以及在多模块中局限性以及使用，在代码中都有详细的注释。
 
-### DataStoreSimple
-
-
-`DataStoreSimple` 是基于 Jetpack 成员 DataStore 在应用使用的示例，DataStore 主要用来替换 SharedPreferences，而 Jetpack DataStore 有两种实现方式：
-
-* Preferences DataStore：以键值对的形式存储在本地和 SharedPreferences 类似
-
-    **main(master) 分支包含了 Preferences DataStore 的使用**，主要包括下面三方面内容
-    
-    * DataStore 解决了什么问题
-    * 如何使用 Preferences DataStore
-    * 如何迁移 迁移 SharedPreferences 到 DataStore
-
-    项目分析的文章请查看 [再见 SharedPreferences 拥抱 Jetpack DataStore](https://juejin.im/post/6881442312560803853)
-    
-* Proto DataStore：存储类的对象（typed objects ），通过 protocol buffers 将对象序列化存储在本地
-    
-    **datastore_proto 分支包含了 Proto DataStore 使用示例**，主要包括下面三方面内容
-    
-    * 为何要有 Proto DataStore?
-    * 如何在项目中使用 Proto DataStore？
-    * 如何迁移 SharedPreferences 到 Proto DataStore？
-    * 常用 proto3 语法解析？
-
-    项目分析的文章请查看 [再见 SharedPreferences 拥抱 DataStore (二)](https://juejin.im/post/6888847647802097672)
-
-
-**Jetpack DataStore 基于 Protobuf 实现的，点击下方连接前往查看：**
-
-* [Protobuf | 安装 Gradle 插件编译 proto 文件](https://hi-dhl.com/2020/10/28/jetpack/05-probuff-AndroidStudio)
-* [Protobuf | 如何在 ubuntu 上安装 Protobuf 编译 proto 文件](https://hi-dhl.com/2020/10/28/android/04-probuff-ubuntu)
-* [Protobuf | 如何在 MAC 上安装 Protobuf 编译 proto 文件](https://hi-dhl.com/2020/10/28/android/05-probuff-mac)
-
-### VersionPlugin
+### <p align="center"> VersionPlugin </p>
 
 `VersionPlugin` 是基于 `Composing builds` 开发的自定义插件，作为整个仓库的依赖库的版本管理，使用 `Composing builds` 作为依赖库的版本管理，它有以下好处：
 
@@ -196,9 +177,15 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 这是关于 buildSrc 和 Composing builds 详细使用案例的代码仓库的地址 [ComposingBuilds-vs-buildSrc](https://github.com/hi-dhl/ComposingBuilds-vs-buildSrc)，在代码中都要详细的注释。
 
+
 ### 其他成员
 
 其他组件成员陆续增加中......敬请期待
+
+
+
+
+
 
 ---
 

@@ -29,6 +29,7 @@ object Versions {
     val junitExt = "1.1.1"
     val espressoCore = "3.2.0"
     val jDatabinding = "1.0.1"
+    val binding = "1.0.7"
     val runtime = "0.11.0"
     val hit = "2.28-alpha"
     val hitViewModule = "1.0.0-alpha01"
@@ -60,7 +61,7 @@ object Hilt {
     val compiler = "androidx.hilt:hilt-compiler:${Versions.hitViewModule}"
 }
 
-object DataStore{
+object DataStore {
     val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.DataStore}"
 }
 
@@ -116,6 +117,7 @@ object Depend {
     val androidTestJunit = "androidx.test.ext:junit:${Versions.junitExt}"
     val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     val jDatabinding = "com.hi-dhl:jdatabinding:${Versions.jDatabinding}"
+    val binding = "com.hi-dhl:binding:${Versions.binding}"
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 

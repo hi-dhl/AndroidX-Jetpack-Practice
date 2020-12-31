@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.hi.dhl.binding.viewbind
 import com.hi.dhl.hilt.R
+import com.hi.dhl.hilt.databinding.ActivityHiltBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_hilt.*
 
 /**
  * <pre>
@@ -18,10 +19,11 @@ import kotlinx.android.synthetic.main.activity_hilt.*
 @AndroidEntryPoint
 class HitAppCompatActivity : AppCompatActivity() {
     private val mHitViewModule: HiltViewModel by viewModels()
+    private val binding: ActivityHiltBinding by viewbind()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hilt)
+
         // 用到了 Fragment 1.2.0 中重要的更新
         // 可以查看之前写的这篇文章 @see https://juejin.im/post/5ecb16f1f265da76fb0c3967
         supportFragmentManager.beginTransaction()
@@ -29,10 +31,10 @@ class HitAppCompatActivity : AppCompatActivity() {
             .commit()
 
         mHitViewModule.mHitLiveData.observe(this, Observer {
-            tvResult.setText(it)
+            binding.tvResult.setText(it)
         })
 
-        btnArgument.setOnClickListener {
+        binding.btnArgument.setOnClickListener {
             mHitViewModule.passArgument("address : shanghai")
         }
     }

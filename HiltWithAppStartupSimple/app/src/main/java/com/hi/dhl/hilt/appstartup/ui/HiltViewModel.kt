@@ -19,6 +19,9 @@ class HiltViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+    private val _mAdressLiveData = MutableLiveData<String>()
+    val mAdressLiveData: LiveData<String> = _mAdressLiveData
+
     // getLiveData 方法会取得一个与 key 相关联的 MutableLiveData
     // 当与 key 相对应的 value 改变时 MutableLiveData 也会更新。
     private val _userId: MutableLiveData<String> = savedStateHandle.getLiveData(USER_KEY)
@@ -44,6 +47,10 @@ class HiltViewModel @ViewModelInject constructor(
                 updateTime = System.currentTimeMillis()
             )
         )
+    }
+
+    fun passArgument(address: String) {
+        _mAdressLiveData.value = address
     }
 
     companion object {

@@ -1,16 +1,15 @@
 package com.hi.dhl.hilt.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.hi.dhl.binding.viewbind
 import com.hi.dhl.hilt.R
+import com.hi.dhl.hilt.databinding.FragmentHiltBinding
 import com.hi.dhl.hilt.di.HiltSimple
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_hilt.*
 import javax.inject.Inject
 
 /**
@@ -26,27 +25,21 @@ import javax.inject.Inject
  * java.lang.IllegalStateException: Hilt Fragments must be attached to an @AndroidEntryPoint Activity. Found: class com.hi.dhl.hilt.ui.MainActivity
  */
 @AndroidEntryPoint
-class HiltFragment : Fragment() {
+class HiltFragment : Fragment(R.layout.fragment_hilt) {
 
     // 使用 @Inject 注解从组件中获取依赖
     @Inject
-    lateinit var mHiltSimple: HiltSimple
-    val mHiltViewModel: HiltViewModel by activityViewModels()
+    lateinit var hiltSimple: HiltSimple
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_hilt, container, false)
-    }
+    private val hiltViewModel: HiltViewModel by activityViewModels()
+    private val binding: FragmentHiltBinding by viewbind()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mHiltSimple.doSomething()
+        hiltSimple.doSomething()
 
-        mHiltViewModel.mAdressLiveData.observe(viewLifecycleOwner, Observer {
-            tvAddress.setText(it)
+        hiltViewModel.mAdressLiveData.observe(viewLifecycleOwner, Observer {
+            binding.tvAddress.setText(it)
         })
     }
 }

@@ -1,10 +1,12 @@
 import com.hi.dhl.plugin.*
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
@@ -31,9 +33,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // For Kotlin projects
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -44,6 +50,7 @@ dependencies {
     kapt Hilt.daggerCompiler
     implementation Hilt.viewModule
     kapt Hilt.compiler
+    implementation Depend.binding
 
     implementation Room.runtime
     kapt Room.compiler

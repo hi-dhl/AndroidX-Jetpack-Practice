@@ -2,13 +2,14 @@ package com.hi.dhl.hilt.appstartup.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.hi.dhl.hilt.appstartup.R
+import com.hi.dhl.binding.viewbind
 import com.hi.dhl.hilt.appstartup.data.WorkService
+import com.hi.dhl.hilt.appstartup.databinding.ActivityMainBinding
 import com.hi.dhl.hilt.appstartup.di.HiltSimple
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import javax.inject.Inject
@@ -23,7 +24,7 @@ import javax.inject.Inject
  * java.lang.IllegalStateException: Hilt Fragments must be attached to an @AndroidEntryPoint Activity. Found: class com.hi.dhl.hilt.appstartup.ui.MainActivity
  */
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     /**
      * 在 App 模块中的 build.gradle 文件中添加以下代码，否则调用 `by viewModels()` 会编译不过
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
      *
      */
     private val mHitViewModule: HiltViewModel by viewModels()
+    private val binding: ActivityMainBinding by viewbind()
 
     @Inject
     lateinit var mAnalyticsService: WorkService
@@ -43,21 +45,39 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        jumpFragment.setOnClickListener { startActivity<HitAppCompatActivity>() }
-        jumpRoom.setOnClickListener {
-            mHitViewModule.insert()
-            toast("插入成功")
+
+        getViews().forEach {
+            it.setOnClickListener(this)
         }
-        jumpSimple.setOnClickListener {
-            mHiltSimple.doSomething()
-            toast("调用成功，查看控制台日志")
-        }
-        jumpBind.setOnClickListener {
-            mAnalyticsService.init()
-            toast("调用成功，查看控制台日志")
-        }
+
         Log.e(TAG, mHiltSimple.toString())
+    }
+
+    private fun getViews() = binding.run {
+        arrayListOf(jumpFragment, jumpRoom, jumpSimple, jumpBind)
+    }
+
+    override fun onClick(v: View) {
+        with(binding) {
+            when (v) {
+                jumpFragment -> startActivity<HitAppCompatActivity>()
+                jumpRoom -> {
+                    mHitViewModule.insert()
+                    toast("插入成功")
+                }
+                jumpSimple -> {
+                    mHiltSimple.doSomething()
+                    toast("调用成功，查看控制台日志")
+                }
+                jumpBind -> {
+                    mAnalyticsService.init()
+                    toast("调用成功，查看控制台日志")
+                }
+                else -> {
+
+                }
+            }
+        }
     }
 
     companion object {

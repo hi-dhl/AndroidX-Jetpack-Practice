@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.hi.dhl.binding.databind
 import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
 import com.hi.dhl.paging3.R
 import com.hi.dhl.paging3.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,26 +26,26 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
 
     // 通过 koin 依赖注入 MainViewModel
-    private val mMainViewModel: MainViewModel by viewModel()
+    private val mainViewModel: MainViewModel by viewModel()
 
-    private val mAdapter by lazy { PersonAdapter() }
+    private val personAdapter by lazy { PersonAdapter() }
 
-    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
+    private val binding: ActivityMainBinding by databind(R.layout.activity_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // bind view
-        mBinding.apply {
-            rvList.adapter = mAdapter
+        binding.apply {
+            rvList.adapter = personAdapter
             lifecycleOwner = this@MainActivity
         }
 
         /**
          *  方法三 [MainViewModel.pageDataLiveData3] 推荐
          */
-        mMainViewModel.pageDataLiveData3.observe(this, Observer { data ->
-            mAdapter.submitData(lifecycle, data)
+        mainViewModel.pageDataLiveData3.observe(this, Observer { data ->
+            personAdapter.submitData(lifecycle, data)
         })
 
         /**
@@ -85,9 +85,9 @@ class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 (viewHolder as PersonViewHolder).mBinding.person?.let {
                     // 当 item 左滑 或者 右滑 的时候删除 item
-                    mMainViewModel.remove(it)
+                    mainViewModel.remove(it)
                 }
             }
-        }).attachToRecyclerView(rvList)
+        }).attachToRecyclerView(binding.rvList)
     }
 }

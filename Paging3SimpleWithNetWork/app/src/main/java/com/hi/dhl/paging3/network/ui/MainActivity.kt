@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import com.hi.dhl.binding.databind
 import com.hi.dhl.jdatabinding.DataBindingAppCompatActivity
 import com.hi.dhl.paging3.network.R
 import com.hi.dhl.paging3.network.databinding.ActivityMainBinding
 import com.hi.dhl.paging3.network.ui.github.FooterAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.AnkoLogger
@@ -30,45 +30,45 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : DataBindingAppCompatActivity(), AnkoLogger {
 
     // 通过 koin 依赖注入 MainViewModel
-    private val mMainViewModel: MainViewModel by viewModel()
+    private val mainViewModel: MainViewModel by viewModel()
 
-    private val mAdapter by lazy { GitHubAdapter() }
+    private val githubAdapter by lazy { GitHubAdapter() }
 
-    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
+    private val binding: ActivityMainBinding by databind(R.layout.activity_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // bind view
-        mBinding.apply {
-            rvList.adapter = mAdapter.withLoadStateFooter(
-                footer = FooterAdapter(mAdapter)
+        with(binding) {
+            rvList.adapter = githubAdapter.withLoadStateFooter(
+                footer = FooterAdapter(githubAdapter)
             )
             swipeRefresh.setOnRefreshListener {
-                mAdapter.refresh()
+                githubAdapter.refresh()
             }
-            lifecycleOwner = this@MainActivity
         }
 
-        mMainViewModel.gitHubLiveData.observe(this, Observer { data ->
-            mAdapter.submitData(lifecycle, data)
+
+        mainViewModel.gitHubLiveData.observe(this, Observer { data ->
+            githubAdapter.submitData(lifecycle, data)
         })
 
         /**
          * 处理下拉刷新的状态
          */
         lifecycleScope.launch {
-            mAdapter.loadStateFlow.collectLatest { state ->
-                swipeRefresh.isRefreshing = state.refresh is LoadState.Loading
+            githubAdapter.loadStateFlow.collectLatest { state ->
+                binding.swipeRefresh.isRefreshing = state.refresh is LoadState.Loading
             }
         }
 
         // 监听数据的状态，显示不同的状态
-        mAdapter.addLoadStateListener { listener ->
+        githubAdapter.addLoadStateListener { listener ->
             // 监听初始化数据加载时候的状态(成功,失败)
             when (listener.refresh) {
                 is LoadState.Error -> { // 加载失败
-                    tvResult.setText(listener.refresh.toString())
+                    binding.tvResult.setText(listener.refresh.toString())
                     error { listener.refresh.toString() }
                 }
                 is LoadState.Loading -> { // 正在加载

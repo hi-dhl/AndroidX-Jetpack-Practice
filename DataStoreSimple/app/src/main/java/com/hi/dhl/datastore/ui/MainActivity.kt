@@ -7,11 +7,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import com.hi.dhl.binding.viewbind
 import com.hi.dhl.datastore.R
+import com.hi.dhl.datastore.databinding.ActivitySpBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_sp.*
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 /**
@@ -26,21 +26,21 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val mainViewModel: MainViewModel by viewModels()
+    private val binding: ActivitySpBinding by viewbind()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sp)
 
-        with(switchAccount) {
-            isChecked = mainViewModel.getData(PreferencesKeys.KEY_ACCOUNT)
-            setOnClickListener(this@MainActivity)
+        getViews().forEach {
+            it.setOnClickListener(this@MainActivity)
         }
 
-        switchWeiBo.setOnClickListener(this@MainActivity)
-        switchGitHub.setOnClickListener(this@MainActivity)
-        btnMrge.setOnClickListener(this)
-
+        binding.switchAccount.isChecked = mainViewModel.getData(PreferencesKeys.KEY_ACCOUNT)
         initObserve()
+    }
+
+    private fun getViews() = binding.run {
+        arrayListOf(switchAccount, switchWeiBo, switchGitHub, btnMrge)
     }
 
     private fun initObserve() {
@@ -49,30 +49,32 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
          */
         mainViewModel.getDataStore(PreferencesKeys.KEY_WEI_BO)
             .observe(this@MainActivity) {
-                switchWeiBo.isChecked = it
+                binding.switchWeiBo.isChecked = it
             }
 
         mainViewModel.getDataStore(PreferencesKeys.KEY_GITHUB)
             .observe(this@MainActivity) {
-                switchGitHub.isChecked = it
+                binding.switchGitHub.isChecked = it
             }
     }
 
     override fun onClick(v: View) {
-        when (v) {
-            switchAccount -> mainViewModel.saveData(PreferencesKeys.KEY_ACCOUNT)
-            switchWeiBo -> mainViewModel.saveDataByDataStore(PreferencesKeys.KEY_WEI_BO)
-            switchGitHub -> mainViewModel.saveDataByDataStore(PreferencesKeys.KEY_GITHUB)
-            btnMrge -> {
-                /**
-                 *  传入 migrations 参数，构建一个 DataStore 之后，
-                 *  需要执行 一次读取 或者 写入，DataStore 才会自动合并 SharedPreference 文件内容
-                 */
-                mainViewModel.migrationSP2DataStore()
-                lifecycleScope.launch {
-                    mainViewModel.testMigration(PreferencesKeys.KEY_BYTE_CODE).collect()
+        with(binding) {
+            when (v) {
+                switchAccount -> mainViewModel.saveData(PreferencesKeys.KEY_ACCOUNT)
+                switchWeiBo -> mainViewModel.saveDataByDataStore(PreferencesKeys.KEY_WEI_BO)
+                switchGitHub -> mainViewModel.saveDataByDataStore(PreferencesKeys.KEY_GITHUB)
+                btnMrge -> {
+                    /**
+                     *  传入 migrations 参数，构建一个 DataStore 之后，
+                     *  需要执行 一次读取 或者 写入，DataStore 才会自动合并 SharedPreference 文件内容
+                     */
+                    mainViewModel.migrationSP2DataStore()
+                    lifecycleScope.launch {
+                        mainViewModel.testMigration(PreferencesKeys.KEY_BYTE_CODE).collect()
+                    }
+                    Toast.makeText(this@MainActivity, "迁移成功", Toast.LENGTH_SHORT).show()
                 }
-                Toast.makeText(this@MainActivity, "迁移成功", Toast.LENGTH_SHORT).show()
             }
         }
     }

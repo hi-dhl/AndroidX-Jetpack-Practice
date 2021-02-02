@@ -1,9 +1,9 @@
 package com.hi.dhl.datastore.data
 
 import android.content.Context
-import androidx.datastore.CorruptionException
-import androidx.datastore.DataStore
-import androidx.datastore.Serializer
+import androidx.datastore.core.CorruptionException
+import androidx.datastore.core.DataStore
+import androidx.datastore.core.Serializer
 import androidx.datastore.createDataStore
 import androidx.datastore.migrations.SharedPreferencesMigration
 import com.hi.dhl.datastore.protobuf.PersonProtos
@@ -33,33 +33,33 @@ class ProtoDataStoreRepository(val context: Context) {
     private val FILE_NAME = "ProtoDataStore.pb"
 
     private val shardPrefsMigration =
-        SharedPreferencesMigration<PersonProtos.Person>(
-            context,
-            SharedPreferencesRepository.PREFERENCE_NAME
-        ) { sharedPreferencesView, person ->
+            SharedPreferencesMigration<PersonProtos.Person>(
+                    context,
+                    SharedPreferencesRepository.PREFERENCE_NAME
+            ) { sharedPreferencesView, person ->
 
-            // 获取 SharedPreferences 的数据
-            val follow = sharedPreferencesView.getBoolean(
-                PreferencesKeys.KEY_ACCOUNT,
-                false
-            )
+                // 获取 SharedPreferences 的数据
+                val follow = sharedPreferencesView.getBoolean(
+                        PreferencesKeys.KEY_ACCOUNT,
+                        false
+                )
 
-            // 将 SharedPreferences 每一对 key-value 数据映射到 Proto DataStore 中
-            // 将 SP 文件中  ByteCode : true 数据迁移到 Person 的成员变量 followAccount 中
-            person.toBuilder()
-                .setFollowAccount(follow)
-                .build()
-        }
+                // 将 SharedPreferences 每一对 key-value 数据映射到 Proto DataStore 中
+                // 将 SP 文件中  ByteCode : true 数据迁移到 Person 的成员变量 followAccount 中
+                person.toBuilder()
+                        .setFollowAccount(follow)
+                        .build()
+            }
 
     var protoDataStore: DataStore<PersonProtos.Person> =
-        context.createDataStore(fileName = FILE_NAME, serializer = PersonSerializer)
+            context.createDataStore(fileName = FILE_NAME, serializer = PersonSerializer)
 
 
     fun migrationSP2DataStore() {
         protoDataStore = context.createDataStore(
-            fileName = FILE_NAME,
-            serializer = PersonSerializer,
-            migrations = listOf(shardPrefsMigration)
+                fileName = FILE_NAME,
+                serializer = PersonSerializer,
+                migrations = listOf(shardPrefsMigration)
         )
     }
 
@@ -71,14 +71,14 @@ class ProtoDataStoreRepository(val context: Context) {
 
     fun readData(): Flow<PersonProtos.Person> {
         return protoDataStore.data
-            .catch {
-                if (it is IOException) {
-                    it.printStackTrace()
-                    emit(PersonProtos.Person.getDefaultInstance())
-                } else {
-                    throw it
+                .catch {
+                    if (it is IOException) {
+                        it.printStackTrace()
+                        emit(PersonProtos.Person.getDefaultInstance())
+                    } else {
+                        throw it
+                    }
                 }
-            }
     }
 
 }
@@ -93,4 +93,7 @@ object PersonSerializer : Serializer<PersonProtos.Person> {
     }
 
     override fun writeTo(t: PersonProtos.Person, output: OutputStream) = t.writeTo(output) // t.writeTo(output) 是编译器自动生成的，用于写入序列化消息
+
+    override val defaultValue: PersonProtos.Person
+        get() = PersonProtos.Person.getDefaultInstance()
 }

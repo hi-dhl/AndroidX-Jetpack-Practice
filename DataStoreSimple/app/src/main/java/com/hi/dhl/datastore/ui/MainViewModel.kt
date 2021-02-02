@@ -1,7 +1,7 @@
 package com.hi.dhl.datastore.ui
 
-import androidx.datastore.preferences.Preferences
-import androidx.datastore.preferences.preferencesKey
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -62,7 +62,7 @@ object PreferencesKeys {
     val KEY_ACCOUNT = "ByteCode"
 
     // DataStore 的测试的 key
-    val KEY_BYTE_CODE = preferencesKey<Boolean>("ByteCode")
-    val KEY_WEI_BO = preferencesKey<Boolean>("weibo")
-    val KEY_GITHUB = preferencesKey<Boolean>("GitHub")
+    val KEY_BYTE_CODE = booleanPreferencesKey("ByteCode")
+    val KEY_WEI_BO = booleanPreferencesKey("weibo")
+    val KEY_GITHUB = booleanPreferencesKey("GitHub")
 }

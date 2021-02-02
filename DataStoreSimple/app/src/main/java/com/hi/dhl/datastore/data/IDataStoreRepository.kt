@@ -1,6 +1,6 @@
 package com.hi.dhl.datastore.data
 
-import androidx.datastore.preferences.Preferences
+import androidx.datastore.preferences.core.Preferences
 import kotlinx.coroutines.flow.Flow
 
 
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
  *     desc  :
  * </pre>
  */
-interface IDataStoreRepository  {
+interface IDataStoreRepository {
     suspend fun saveData(key: Preferences.Key<Boolean>)
 
     fun readData(key: Preferences.Key<Boolean>): Flow<Boolean>

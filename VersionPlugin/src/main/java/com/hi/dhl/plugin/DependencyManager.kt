@@ -33,7 +33,7 @@ object Versions {
     val hit = "2.28-alpha"
     val hitViewModule = "1.0.0-alpha01"
     val appStartup = "1.0.0-alpha01"
-    val DataStore = "1.0.0-alpha01"
+    val DataStore = "1.0.0-alpha06"
     val javalite = "3.8.0"
 }
 

@@ -29,12 +29,15 @@ object Versions {
     val junitExt = "1.1.1"
     val espressoCore = "3.2.0"
     val jDatabinding = "1.0.1"
-    val binding = "1.0.7"
+    val binding = "1.1.3"
     val runtime = "0.11.0"
     val hit = "2.28-alpha"
     val hitViewModule = "1.0.0-alpha01"
     val appStartup = "1.0.0-alpha01"
     val DataStore = "1.0.0-alpha01"
+    val splashscreen = "1.0.0-alpha01"
+    val annotation = "1.2.0"
+    val material = "1.3.0"
 }
 
 object AndroidX {
@@ -52,6 +55,12 @@ object AndroidX {
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
 
     val appStartup = "androidx.startup:startup-runtime:${Versions.appStartup}"
+    val splashscreen = "androidx.core:core-splashscreen:1.0.0-alpha01"
+    val annotation = "androidx.annotation:annotation:${Versions.annotation}"
+}
+
+object Android {
+    val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object Hilt {

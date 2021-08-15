@@ -16,6 +16,8 @@
 ```
 AndroidX-Jetpack-Practice
 │
+├── Splashscreen                    // 闪屏：启动动画，兼容 Android 5.0(21) ~ Android 12 （31）
+│
 ├── AppStartupSimple                // App Startup 示例应用
 │
 ├── Paging3Simple                   // Paging 3 加载本地数据库的示例应用
@@ -61,6 +63,12 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 ## <p align="center"> 仓库项目介绍 </p>
 
 仓库 `AndroidX-Jetpack-Practice` 致力于建立最全、最新的 **AndroidX Jetpack 组件的实战项目** 以及 **组件对应分析文章**，后续会慢慢陆续增加 Jetpack 新成员，仓库持续更新，会持续不断的慢慢的去完善，可以关注了解最新动态。
+
+### <p align="center"> Splashscreen </p>
+
+
+`Splashscreen` 是基于 Jetpack 成员 SplashScreen 在应用中的使用的示例，SplashScreen 用于实现闪屏启动动画，兼容 Android 5.0 （API 21） ~ Android 12 （API 31）。
+
 
 ### <p align="center"> DataStoreSimple </p>
 

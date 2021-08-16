@@ -16,7 +16,7 @@
 ```
 AndroidX-Jetpack-Practice
 │
-├── Splashscreen                    // 闪屏：启动动画，兼容 Android 5.0(21) ~ Android 12 （31）
+├── Splashscreen                    // 闪屏：启动动画，兼容 Android 5.0(21) ~ Android 12 （31） 所有的 API
 │
 ├── AppStartupSimple                // App Startup 示例应用
 │
@@ -66,8 +66,7 @@ PokemonGo 效果图如下所示，如果图片无法查看，请点击这里查�
 
 ### <p align="center"> Splashscreen </p>
 
-
-`Splashscreen` 是基于 Jetpack 成员 SplashScreen 在应用中的使用的示例，SplashScreen 用于实现闪屏启动动画，兼容 Android 5.0 （API 21） ~ Android 12 （API 31）。
+`Splashscreen` 是基于 Jetpack 成员 Core Splashscreen 在应用中的使用的示例，SplashScreen 用于实现闪屏启动动画，兼容 Android 5.0 （API 21） ~ Android 12 （API 31）所有的 API。
 
 
 ### <p align="center"> DataStoreSimple </p>
